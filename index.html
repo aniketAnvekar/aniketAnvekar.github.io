@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aniket Anvekar - Personal Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-circle-progress/1.2.2/circle-progress.min.js"></script>
+    <script src="https://kit.fontawesome.com/aedf671c46.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Page loader starts -->
+    <div class="page-loader">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <!-- Page loader ends -->
+
+    <div class="bg-design">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="overlay">
+        <!-- activate the overlay to avoid multiple clicks -->
+    </div>
+
+    <div class="main hidden">
+
+        <!-- Header starts -->
+        <header class="header">
+            <div class="container">
+                <div class="row">
+                    <button type="button" class="nav-toggle">
+                        <span></span>
+                    </button>
+                    <nav class="nav-items">
+                        <div class="nav-inner">
+                            <ul>
+                            <li><a href="#home" class="nav-item link-item">Home</a></li>
+                            <li><a href="#about" class="nav-item link-item">About</a></li>
+                            <li><a href="#skill-section" class="nav-item link-item">Skills</a></li>
+                            <li><a href="#testimonial" class="nav-item link-item">Testimonial</a></li>
+                            <li><a href="#contact" class="nav-item link-item">Contact</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <!-- Header ends -->
+
+        <!-- Home section start -->
+        <section class="home-section align-items-center" id="home">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="home-txt">
+                        <p>Hello, I am</p>
+                        <h1>Aniket Vinesh Anvekar</h1>
+                        <h2>CS Graduate, Software Developer, Travel Enthusiast</h2>
+                        <a href="#about" class="btn link-item">About Me</a>
+                        <a href="#contact" class="btn link-item">Contact Me</a>
+                    </div>
+                    <div class="home-pic">
+                        <div class="img-box">
+                            <img src="Images/Aniket-IMG2.png" alt="Aniket Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Home section ends -->
+
+        <!-- About section starts -->
+        <section class="about-section sec-padding" id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="section-title">
+                        <h2>About Me</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="about-img">
+                        <div class="img-box">
+                            <img src="Images/Aniket-IMG2.png" alt="Aniket Image">
+                        </div>
+                    </div>
+                    <div class="about-txt">
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus illum dolorem ullam aspernatur, molestias molestiae nobis cum ea ipsam ducimus amet commodi illo inventore, accusantium tempora laborum dolor. Ratione, corporis.</p>
+                        <h3>Top Skills</h3>
+                        <div class="skills">
+                            <div class="skill-item">Data Structures & Algorithms</div>
+                            <div class="skill-item">Web Development</div>
+                            <div class="skill-item">Machine Learning</div>
+                            <div class="skill-item">Data Analysis & Visualization</div>
+                            <div class="skill-item">Cloud Computing</div>
+                            <div class="skill-item">Technical Writing</div>
+                        </div>
+
+                        <div class="about-tabs">
+                                <button type="button" class="tab-item active" data-target="#education">Education</button>
+                                <button type="button" class="tab-item" data-target="#experience">Work Experience</button>
+                        </div>
+
+                        <!-- Education starts -->
+                        <div class="tab-content active" id="education">
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <span class="date">Aug 2015 - May 2019</span>
+                                    <h4>Bachelor of Engineering - <span>University of Mumbai</span></h4>
+                                    <p>Majoring in Computer Engineering</p>
+                                    <p>Relevant Courses - Data Structures, Analysis of Algorithm, Operating System, Computer Networks, Object Oriented Programming, Machine Learning</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <span class="date">Sep 2022- May 2024</span>
+                                    <h4>Master of Science - <span>Rutgers Univeristy</span></h4>
+                                    <p>Majoring in Computer Science</p>
+                                    <p>Relevant Courses - Mathematical Foundation of Data Science, Massive Data Mining, Computer Vision, Machine Learning</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Education ends -->
+
+                        <!-- Experience starts -->
+
+                        <div class="tab-content" id="experience">
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <span class="date">Aug 2018 - Oct 2018</span>
+                                    <h4>Teaching Assistant - <span>Rutgers University</span></h4>
+                                    <ul>
+                                        <li><p>Technology used - </p></li>
+                                        <li><p>Clients worked for - </p></li>
+                                    </ul>
+                                </div>
+                                <div class="timeline-item">
+                                    <span class="date">Aug 2019 - Aug 2022</span>
+                                    <h4>Software Engineer - <span>Tata Consultancy Services</span></h4>
+                                    <ul>
+                                        <li><p>Technology used - </p></li>
+                                        <li><p>Clients worked for - </p></li>
+                                    </ul>
+                                </div>
+                                <div class="timeline-item">
+                                    <span class="date">Sep 2022- Present</span>
+                                    <h4>Teaching Assistant - <span>Rutgers University</span></h4>
+                                    <ul>
+                                        <li><p>Technology used - </p></li>
+                                        <li><p>Clients worked for - </p></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Experience ends -->
+
+                        <a href="#" class="btn">download cv</a>
+                        <a href="#" class="btn">contact me</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- About section ends -->
+
+        <!-- Technical skills analysis starts -->
+
+        <section id="skill-section" class="">
+            <div class="skill-head">
+                <h2>My <span>Skills</span></h2>
+                <p>Here is the detailed analysis of my skillset.</p>
+            </div>
+            <div class="skill-main">
+                <div class="column">
+                    <div class="skill-domain">
+                        <h3>Web Development</h3>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="info">
+                            <p>HTML</p>
+                            <p class="percent">90%</p>
+                        </div>
+                        <div class="bar">
+                            <span class="html"></span>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="info">
+                            <p>CSS</p>
+                            <p class="percent">90%</p>
+                        </div>
+                        <div class="bar">
+                            <span class="css"></span>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="info">
+                            <p>JavaScript</p>
+                            <p class="percent">90%</p>
+                        </div>
+                        <div class="bar">
+                            <span class="js"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="column">
+                    <div class="skill-domain">
+                        <h3>Data Science</h3>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="info">
+                            <p>Python</p>
+                            <p class="percent">90%</p>
+                        </div>
+                        <div class="bar">
+                            <span class="html"></span>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="info">
+                            <p>R</p>
+                            <p class="percent">90%</p>
+                        </div>
+                        <div class="bar">
+                            <span class="css"></span>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="info">
+                            <p>Data Wrangling</p>
+                            <p class="percent">90%</p>
+                        </div>
+                        <div class="bar">
+                            <span class="js"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="skill-domain">
+                        <h3>Data Science</h3>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="info">
+                            <p>Python</p>
+                            <p class="percent">90%</p>
+                        </div>
+                        <div class="bar">
+                            <span class="html"></span>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="info">
+                            <p>R</p>
+                            <p class="percent">90%</p>
+                        </div>
+                        <div class="bar">
+                            <span class="css"></span>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="info">
+                            <p>Data Wrangling</p>
+                            <p class="percent">90%</p>
+                        </div>
+                        <div class="bar">
+                            <span class="js"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="skill-domain">
+                        <h3>Data Science</h3>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="info">
+                            <p>Python</p>
+                            <p class="percent">90%</p>
+                        </div>
+                        <div class="bar">
+                            <span class="html"></span>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="info">
+                            <p>R</p>
+                            <p class="percent">90%</p>
+                        </div>
+                        <div class="bar">
+                            <span class="css"></span>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="info">
+                            <p>Data Wrangling</p>
+                            <p class="percent">90%</p>
+                        </div>
+                        <div class="bar">
+                            <span class="js"></span>
+                        </div>
+                    </div>
+                  </div>      
+            </div>
+
+            <div class="circular-bar">
+                
+                <div class="wrapper">
+                    <div class="card">
+                        <div class="circle">
+                            <div class="bar"></div>
+                            <div class="box"><span></span></div>
+                        </div>
+                        <div class="text">Problem Solving</div>
+                    </div>
+                    <div class="card leadership">
+                        <div class="circle">
+                            <div class="bar"></div>
+                            <div class="box"><span></span></div>
+                        </div>
+                        <div class="text">Leadership</div>
+                    </div>
+                    <div class="card client">
+                        <div class="circle">
+                            <div class="bar"></div>
+                            <div class="box"><span></span></div>
+                        </div>
+                        <div class="text">Client facing roles</div>
+                    </div>
+                    <div class="card technical-writing">
+                        <div class="circle">
+                            <div class="bar"></div>
+                            <div class="box"><span></span></div>
+                        </div>
+                        <div class="text">Technical writing</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical skills analysis ends -->
+
+        <!-- Testimonial page starts here -->
+        <section class="testimonial-section" id="testimonial">
+            <div class="testimonials">
+                <div class="inner">
+                    <h1>Testimonials</h1>
+                    <div class="border"></div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="testimonial-card">
+                                <img class="rutgers-img" src="./Images/Rutgers1.png" alt="Rutgers University">
+                                <div class="name">Full Name 1</div>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <div class="testimonial-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam quod itaque ipsa mollitia quisquam qui quidem provident ratione a, earum ipsam quo illum incidunt blanditiis dolore recusandae debitis maiores sapiente.</div>                                <span class="quote"><i class="fa fa-quote-left"></i></span>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="testimonial-card">
+                                <img class="rutgers-img" src="./Images/Rutgers1.png"" alt="Rutgers University">
+                                <div class="name">Full Name 2</div>
+                                <div class="stars">
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <div class="testimonial-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam quod itaque ipsa mollitia quisquam qui quidem provident ratione a, earum ipsam quo illum incidunt blanditiis dolore recusandae debitis maiores sapiente.</div>
+                                <!-- <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda corporis vel voluptatibus obcaecati vero vitae accusamus? Aspernatur ad quae, nesciunt rerum nulla vitae minima rem molestias in possimus, amet sint.</p> -->
+                                <span class="quote"><i class="fa fa-quote-left"></i></span>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="testimonial-card">
+                                <img class="rutgers-img" src="./Images/Rutgers1.png"" alt="Rutgers University">
+                                <div class="name">Full Name 3</div>
+                                <div class="stars">
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <div class="testimonial-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam quod itaque ipsa mollitia quisquam qui quidem provident ratione a, earum ipsam quo illum incidunt blanditiis dolore recusandae debitis maiores sapiente.</div>                                <span class="quote"><i class="fa fa-quote-left"></i></span>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="testimonial-card">
+                                <img src="./Images/TCS-logo.jpg" alt="Rutgers University">
+                                <div class="name">Full Name 4</div>
+                                <div class="stars">
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                            <div class="testimonial-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam quod itaque ipsa mollitia quisquam qui quidem provident ratione a, earum ipsam quo illum incidunt blanditiis dolore recusandae debitis maiores sapiente.</div>                                <span class="quote"><i class="fa fa-quote-left"></i></span>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="testimonial-card">
+                                <img src="./Images/TCS-logo.jpg" alt="Rutgers University">
+                                <div class="name">Full Name 5</div>
+                                <div class="stars">
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <div class="testimonial-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam quod itaque ipsa mollitia quisquam qui quidem provident ratione a, earum ipsam quo illum incidunt blanditiis dolore recusandae debitis maiores sapiente.</div>                                <span class="quote"><i class="fa fa-quote-left"></i></span>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="testimonial-card">
+                                <img src="./Images/Rizvi-logo.jpeg" alt="Rutgers University">
+                                <div class="name">Full Name 6</div>
+                                <div class="stars">
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <div class="testimonial-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam quod itaque ipsa mollitia quisquam qui quidem provident ratione a, earum ipsam quo illum incidunt blanditiis dolore recusandae debitis maiores sapiente.</div>                                <span class="quote"><i class="fa fa-quote-left"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Testimonial page ends here -->
+
+        <!-- Contact section starts here -->
+        <section class="contact-section sec-padding" id="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="section-title">
+                        <h2>Contact Me</h2>
+                    </div>
+                </div>
+                <div class="row contact-details">
+                    <div class="contact-form">
+                        <form>
+                            <div class="row">
+                                <div class="input-group">
+                                    <input type="text" placeholder="Name" class="input-control" required>
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" placeholder="Email" class="input-control" required>
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" placeholder="Subject" class="input-control" required>
+                                </div>
+                                <div class="input-group">
+                                    <textarea placeholder="Message" class="input-control" required></textarea>
+                                </div>
+                                <div class="submit-btn">
+                                    <button type="button" class="btn">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-info-item">
+                            <h3>Email</h3>
+                            <p>aniketanvekar25@gmail.com</p>
+                        </div>
+                        <div class="contact-info-item">
+                            <h3>Contact</h3>
+                            <p>+1 (201)-920-****</p>
+                        </div>
+                        <div class="contact-info-item">
+                            <h3>Follow Me</h3>
+                            <div class="social-links">
+                                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Contact section ends here -->
+    </div>
+
+    <script>
+        let options = {
+            startAngle: -1.55,
+            size: 130,
+            value: 0.9,
+            fill: {gradient: ["#1c9657","#222e74"]}
+        }
+        $(".circle .bar").circleProgress(options).on('circle-animation-progress',
+        function(event, progress, stepValue){
+            $(this).parent().find("span").text(String(stepValue.toFixed(2).substr(2) + "%"))
+        });
+        $(".leadership .bar").circleProgress({
+            value: 0.75
+        });
+        $(".client .bar").circleProgress({
+            value: 0.75
+        });
+        $(".technical-writing .bar").circleProgress({
+            value: 0.85
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
+
