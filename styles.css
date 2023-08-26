@@ -102,8 +102,8 @@ section.fade-out{
 }
 
 img{
-    width: 480px;
-    height: 500px;
+    width: 500px;
+    height: 600px;
     max-width: 100%;
     border-radius: 25%;
     border: 1px solid var(--white-alpha-40);
