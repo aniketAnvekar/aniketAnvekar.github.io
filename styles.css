@@ -681,12 +681,58 @@ body.hide-scrolling{
     padding: 0 15px;
 }
 
+.about-section .section-title .border{
+    width: 190px;
+    height: 4px;
+    background: #102d1d;
+    margin: 1px auto;
+    margin-bottom: 20px;
+}
+
 .about-img .img-box{
     max-width: 350px;
     margin: auto;
     border: 4px solid var(--white-alpha-25);
     border-radius: 26%;
     box-shadow: 2px 4px 5px black;
+}
+
+.about-txt .aboutme-container p{
+    line-height: 1.5;
+    text-align: justify;
+}
+
+#check{
+    display: none;
+}
+
+.about-txt .aboutme-container .more-content{
+    display: none;
+    transition: 0.5s linear
+}
+
+.about-txt .aboutme-container label{
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: underline;
+    color: #102d1d;
+    cursor: pointer;
+    font-weight: 400;
+}
+
+#check:checked ~ .more-content{
+    display: block;
+}
+
+#check:checked ~ label{
+    visibility: hidden;
+}
+
+#check:checked ~ label::after{
+    content: 'Show Less';
+    display: block;
+    visibility: visible;
+    margin-top: -12px;
 }
 
 .about-txt h3{
@@ -852,7 +898,16 @@ body.hide-scrolling{
     text-align: center;
 }
 
+.skill-head .border{
+    width: 130px;
+    height: 4px;
+    background: #102d1d;
+    margin: 1px auto;
+    margin-bottom: 20px;
+}
+
 .skill-main{
+    position: relative;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -861,11 +916,77 @@ body.hide-scrolling{
     /* margin-top: 10px; */
 }
 
+.skill-main .skill-domain{
+    margin-bottom: 15px;
+}
+
 .skill-main .skill-bar .info{
     display: flex;
     justify-content: space-between;
     /* margin-bottom: 5px; */
     /* padding: 0 7px; */
+}
+
+.tooltip-text{
+    cursor: pointer;
+}
+
+
+[data-tip] {
+    position:relative;
+    display: inline-block;
+
+}
+[data-tip]:before {
+    content:'';
+    /* hides the tooltip when not hovered */
+    display:none;
+    content:'';
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #1a1a1a;   
+    position:absolute;
+    top:18px;
+    left:15px;
+    z-index:8;
+    font-size:0;
+    line-height:0;
+    width:0;
+    height:0;
+}
+
+
+[data-tip]:after {
+    display:none;
+    content:attr(data-tip);
+    position:absolute;
+    top:22px;
+    left:0px;
+    padding:5px 8px;
+    background:#050604af;
+    color:#f0ecec;
+    z-index:10;
+    font-size: 0.85em;
+    min-height: 30px; /* Set a minimum height */
+    max-height: 250px;
+    max-width: 500px;
+    line-height:18px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    white-space:nowrap;
+    word-wrap:normal;
+}
+
+@media (max-width: 1200px) {
+    [data-tip]:after {
+        white-space: normal;
+    }
+}
+
+[data-tip]:hover:before,
+[data-tip]:hover:after {
+    display:block;
 }
 
 .skill-bar .info .percent{
@@ -889,12 +1010,29 @@ body.hide-scrolling{
     border-radius: 25px;
 }
 
-.skill-bar .bar .html{
+/* Application Programming */
+
+.skill-bar .bar .python{
     width: 90%;
-    animation: html 3s;
+    animation: python 4s;
 }
 
-@keyframes html{
+.skill-bar .bar .Cpp{
+    width: 90%;
+    animation: cpp 4s;
+}
+
+.skill-bar .bar .java{
+    width: 75%;
+    animation: java 4s;
+}
+
+.skill-bar .bar .abap{
+    width: 70%;
+    animation: abap 4s;
+}
+
+@keyframes python{
     0%{
         width: 0;
     }
@@ -902,6 +1040,214 @@ body.hide-scrolling{
         width: 90%;
     }
 }
+
+@keyframes cpp{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 90%;
+    }
+}
+
+@keyframes java{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 75%;
+    }
+}
+
+@keyframes abap{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 70%;
+    }
+}
+
+/* ################# */
+
+/* Web-development */
+.skill-bar .bar .html-css{
+    width: 90%;
+    animation: html-css 4s;
+}
+
+.skill-bar .bar .js{
+    width: 85%;
+    animation: js 4s;
+}
+
+.skill-bar .bar .node{
+    width: 75%;
+    animation: node 4s;
+}
+
+.skill-bar .bar .react{
+    width: 80%;
+    animation: react 4s;
+}
+
+@keyframes html-css{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 90%;
+    }
+}
+
+@keyframes js{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 85%;
+    }
+}
+
+@keyframes node{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 75%;
+    }
+}
+
+@keyframes react{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 80%;
+    }
+}
+
+/* ################# */
+
+/* Data Science */
+
+.skill-bar .bar .ML{
+    width: 90%;
+    animation: ML 4s;
+}
+
+.skill-bar .bar .NLP{
+    width: 80%;
+    animation: NLP 4s;
+}
+
+.skill-bar .bar .data-visualization{
+    width: 80%;
+    animation: data-visualization 4s;
+}
+
+.skill-bar .bar .SQL{
+    width: 75%;
+    animation: SQL 4s;
+}
+
+@keyframes ML{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 90%;
+    }
+}
+
+@keyframes NLP{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 80%;
+    }
+}
+
+@keyframes data-visualization{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 80%;
+    }
+}
+
+@keyframes SQL{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 75%;
+    }
+}
+
+/* ################# */
+
+/* Cloud & DevOps */
+
+.skill-bar .bar .aws{
+    width: 80%;
+    animation: aws 4s;
+}
+
+.skill-bar .bar .m-az{
+    width: 75%;
+    animation: m-az 4s;
+}
+
+.skill-bar .bar .docker{
+    width: 70%;
+    animation: docker 4s;
+}
+
+.skill-bar .bar .git{
+    width: 80%;
+    animation: git 4s;
+}
+
+@keyframes aws{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 80%;
+    }
+}
+
+@keyframes m-az{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 75%;
+    }
+}
+
+@keyframes docker{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 70%;
+    }
+}
+
+@keyframes git{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 80%;
+    }
+}
+
+/* ################# */
 
 @media (min-width: 395px) and (max-width: 1714px){
     .skill-main {

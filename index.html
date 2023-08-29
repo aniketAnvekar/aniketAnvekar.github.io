@@ -88,6 +88,7 @@
                 <div class="row">
                     <div class="section-title">
                         <h2>About Me</h2>
+                        <div class="border"></div>
                     </div>
                 </div>
                 <div class="row">
@@ -97,7 +98,15 @@
                         </div>
                     </div>
                     <div class="about-txt">
-                        <p>I am a Computer Science graduate student at Rutgers University, located in the vibrant state of New Jersey, USA. Through my academic journey and professional endeavors, I have embraced challenges that honed my problem-solving prowess and acquired resume-enhancing skills. My enthusiasm for Computer Science has skyrocketed over the last 8 years, compelling me to pursue a master's degree. Beyond studies and work, I am an avid explorer of global history and religions, with a deep passion for diverse cuisines that satisfies the inner foodie in me.</p>
+                        <div class="aboutme-container">
+                            <input type="checkbox" id="check">
+                            <p>I am a Computer Science graduate student at Rutgers University, located in the vibrant state of New Jersey, USA.</p>
+                            <div class="more-content">
+                                <p>Through my academic journey and professional endeavors, I have embraced challenges that honed my problem-solving prowess and acquired resume-enhancing skills. My enthusiasm for Computer Science has skyrocketed over the last 8 years, compelling me to pursue a master's degree.</p>
+                                <p>Beyond studies and work, I am an avid explorer of global history and religions, with a deep passion for diverse cuisines that satisfies the inner foodie in me.</p> 
+                            </div>
+                            <label for="check">Read More</label>
+                        </div>
                         <h3>Top Skills</h3>
                         <div class="skills">
                             <div class="skill-item">Data Structures & Algorithms</div>
@@ -186,39 +195,104 @@
 
         <section id="skill-section" class="">
             <div class="skill-head">
-                <h2>My <span>Skills</span></h2>
+                <h2>Top <span>Skills</span></h2>
+                <div class="border"></div>
                 <p>Here is the detailed analysis of my skillset.</p>
             </div>
+
             <div class="skill-main">
+                <div class="column">
+                    <div class="skill-domain">
+                        <h3>Application Programming</h3>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="info">
+                            <div class="tooltip-text" data-tip="OOP | Pandas | Numpy | Web Scraping(bs4, selenium) | Flask | Django">
+                                <p>Python</p>
+                            </div>
+                            <!-- <div class="tooltip">
+                                <span id="tooltip-text">OOP, Pandas, Numpy, Web Scraping(bs4, selenium), Flask</span>
+                                <span class="tooltip-label">Python</span>
+                            </div> -->
+                            <span class="percent">90%</span>
+                        </div>
+                        <div class="bar">
+                            <span class="python"></span>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="info">
+                            <div class="tooltip-text" data-tip="OOP | Templates | Inheritance | Pointers | STLs">
+                                <p>C++</p>
+                            </div>
+                            <span class="percent">90%</span>
+                        </div>
+                        <div class="bar">
+                            <span class="Cpp"></span>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="info">
+                            <div class="tooltip-text" data-tip="Spring | Hadoop MapReduce | Android Studio">
+                                <p>Java</p>
+                            </div>
+                            <span class="percent">75%</span>
+                        </div>
+                        <div class="bar">
+                            <span class="java"></span>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="info">
+                            <div class="tooltip-text" data-tip="ALV Reports | Smartforms | BAPIs">
+                                <p>SAP ABAP</p>
+                            </div>
+                            <span class="percent">70%</span>
+                        </div>
+                        <div class="bar">
+                            <span class="abap"></span>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="column">
                     <div class="skill-domain">
                         <h3>Web Development</h3>
                     </div>
                     <div class="skill-bar">
                         <div class="info">
-                            <p>HTML</p>
+                            <p>HTML/CSS</p>
                             <p class="percent">90%</p>
                         </div>
                         <div class="bar">
-                            <span class="html"></span>
-                        </div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="info">
-                            <p>CSS</p>
-                            <p class="percent">90%</p>
-                        </div>
-                        <div class="bar">
-                            <span class="css"></span>
+                            <span class="html-css"></span>
                         </div>
                     </div>
                     <div class="skill-bar">
                         <div class="info">
                             <p>JavaScript</p>
-                            <p class="percent">90%</p>
+                            <p class="percent">85%</p>
                         </div>
                         <div class="bar">
                             <span class="js"></span>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="info">
+                            <p>Node.js</p>
+                            <p class="percent">75%</p>
+                        </div>
+                        <div class="bar">
+                            <span class="node"></span>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="info">
+                            <p>React</p>
+                            <p class="percent">80%</p>
+                        </div>
+                        <div class="bar">
+                            <span class="react"></span>
                         </div>
                     </div>
                 </div>
@@ -230,95 +304,81 @@
                     </div>
                     <div class="skill-bar">
                         <div class="info">
-                            <p>Python</p>
+                            <p>Machine Learning</p>
                             <p class="percent">90%</p>
                         </div>
                         <div class="bar">
-                            <span class="html"></span>
+                            <span class="ML"></span>
                         </div>
                     </div>
                     <div class="skill-bar">
                         <div class="info">
-                            <p>R</p>
-                            <p class="percent">90%</p>
+                            <p>NLP</p>
+                            <p class="percent">80%</p>
                         </div>
                         <div class="bar">
-                            <span class="css"></span>
+                            <span class="NLP"></span>
                         </div>
                     </div>
                     <div class="skill-bar">
                         <div class="info">
-                            <p>Data Wrangling</p>
-                            <p class="percent">90%</p>
+                            <p>Data Visualization</p>
+                            <p class="percent">80%</p>
                         </div>
                         <div class="bar">
-                            <span class="js"></span>
+                            <span class="data-visualization"></span>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="info">
+                            <p>SQL</p>
+                            <p class="percent">75%</p>
+                        </div>
+                        <div class="bar">
+                            <span class="SQL"></span>
                         </div>
                     </div>
                 </div>
 
-                <div class="column">
-                    <div class="skill-domain">
-                        <h3>Data Science</h3>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="info">
-                            <p>Python</p>
-                            <p class="percent">90%</p>
-                        </div>
-                        <div class="bar">
-                            <span class="html"></span>
-                        </div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="info">
-                            <p>R</p>
-                            <p class="percent">90%</p>
-                        </div>
-                        <div class="bar">
-                            <span class="css"></span>
-                        </div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="info">
-                            <p>Data Wrangling</p>
-                            <p class="percent">90%</p>
-                        </div>
-                        <div class="bar">
-                            <span class="js"></span>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="column">
                     <div class="skill-domain">
-                        <h3>Data Science</h3>
+                        <h3>Cloud Computing & DevOps</h3>
                     </div>
                     <div class="skill-bar">
                         <div class="info">
-                            <p>Python</p>
-                            <p class="percent">90%</p>
+                            <p>AWS</p>
+                            <p class="percent">80%</p>
                         </div>
                         <div class="bar">
-                            <span class="html"></span>
-                        </div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="info">
-                            <p>R</p>
-                            <p class="percent">90%</p>
-                        </div>
-                        <div class="bar">
-                            <span class="css"></span>
+                            <span class="aws"></span>
                         </div>
                     </div>
                     <div class="skill-bar">
                         <div class="info">
-                            <p>Data Wrangling</p>
-                            <p class="percent">90%</p>
+                            <p>Microsoft Azure</p>
+                            <p class="percent">75%</p>
                         </div>
                         <div class="bar">
-                            <span class="js"></span>
+                            <span class="m-az"></span>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="info">
+                            <p>Docker</p>
+                            <p class="percent">70%</p>
+                        </div>
+                        <div class="bar">
+                            <span class="docker"></span>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="info">
+                            <p>Git</p>
+                            <p class="percent">80%</p>
+                        </div>
+                        <div class="bar">
+                            <span class="git"></span>
                         </div>
                     </div>
                   </div>      
@@ -523,15 +583,16 @@
     </div>
 
     <script>
+         function initCircularAnimation() {
         let options = {
             startAngle: -1.55,
             size: 130,
             value: 0.9,
-            fill: {gradient: ["#1c9657","#222e74"]}
-        }
+            fill: { gradient: ["#1c9657", "#222e74"] }
+        };
         $(".circle .bar").circleProgress(options).on('circle-animation-progress',
         function(event, progress, stepValue){
-            $(this).parent().find("span").text(String(stepValue.toFixed(2).substr(2) + "%"))
+            $(this).parent().find("span").text(String(stepValue.toFixed(2).substr(2) + "%"));
         });
         $(".leadership .bar").circleProgress({
             value: 0.75
@@ -542,6 +603,30 @@
         $(".technical-writing .bar").circleProgress({
             value: 0.85
         });
+    }
+
+    // Use Intersection Observer to detect when the section is visible
+    const circularBarSection = document.querySelector('.circular-bar');
+    const options = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.5 // Adjust the threshold as needed
+    };
+
+    const observer = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Call the function when the section is visible
+                initCircularAnimation();
+                // Unobserve the target to avoid unnecessary calls
+                observer.unobserve(entry.target);
+            }
+        });
+    }, options);
+
+    // Start observing the circular-bar section
+    observer.observe(circularBarSection);
+
     </script>
     <script src="script.js"></script>
 </body>
