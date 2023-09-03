@@ -1663,7 +1663,7 @@ body.hide-scrolling{
     }
 
     .header .nav-inner{
-        max-height: 400px;
+        min-height: calc(100vh - 150px);
     }
 }
 
