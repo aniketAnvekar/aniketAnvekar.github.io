@@ -1661,10 +1661,6 @@ body.hide-scrolling{
     .header .nav-inner ul li a{
         font-size: 30px;
     }
-
-    .header .nav-inner{
-        max-height: calc(100vh - 150px);
-    }
 }
 
 @media(max-width:775px){
@@ -1694,5 +1690,9 @@ body.hide-scrolling{
 
     .about-img .img-box{
         max-width: 250px;
+    }
+
+    .header .nav-inner{
+        min-height: calc(100vh - 250px);
     }
 }
