@@ -29,6 +29,7 @@ function toggleNavbar(){
 
 document.addEventListener("click", (e) =>{
     if(e.target.classList.contains("link-item") && e.target.hash !== ""){
+        // console.log(e.target.hash);
         document.querySelector(".overlay").classList.add("active");
         navToggler.classList.add("hide");
         if(e.target.classList.contains("nav-item")){
@@ -51,6 +52,41 @@ document.addEventListener("click", (e) =>{
 
 /* End */
 
+// Scroll below
+document.addEventListener("click", (e) => {
+    if (e.target.classList.contains("scroll-link") && e.target.hash !== "") {
+        console.log(e.target.hash);
+        document.querySelector(".overlay").classList.add("active");
+        setTimeout(() =>{
+            document.querySelector("section.active").classList.remove("active", "fade-out");
+            document.querySelector(e.target.hash).classList.add("active");
+            window.scrollTo(0,0);
+            document.body.classList.remove("hide-scrolling");
+            navToggler.classList.remove("hide");
+            document.querySelector(".overlay").classList.remove("active");
+        }, 300);
+//         // Prevent the default behavior of the anchor link
+//         e.preventDefault();
+        
+//         // Get the target section ID from the href attribute
+//         const targetId = e.target.getAttribute("href");
+        
+//         if (targetId) {
+//             // Scroll to the target section
+//             const targetSection = document.querySelector(targetId);
+//             if (targetSection) {
+//                 targetSection.scrollIntoView({ behavior: "smooth" });
+//             }
+//         }
+    }
+});
+
+// const scroller = document.querySelector("scroll-below-row");
+
+
+
+
+/* End */
 
 const tabContainer = document.querySelector(".about-tabs"),
 aboutSection = document.querySelector(".about-section");
