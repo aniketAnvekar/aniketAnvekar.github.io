@@ -1643,6 +1643,10 @@ body.hide-scrolling{
     .home-txt .btn{
         margin: 0 7px 15px;
     }
+
+    .header .nav-inner{
+        min-height: calc(100vh - 90px);
+    }
 }
 
 @media(max-width:575px){
@@ -1656,6 +1660,10 @@ body.hide-scrolling{
 
     .header .nav-inner ul li a{
         font-size: 30px;
+    }
+
+    .header .nav-inner{
+        max-height: 400px;
     }
 }
 
