@@ -35,8 +35,8 @@
 
 body{
     min-height: 100vh;
-    background-image: linear-gradient(to bottom right, var(--green-light), var(--blue-light));  /* Previous */
-    background-image: linear-gradient(to bottom right, #31B7C2, #7BC393);  /* New */
+    /* background-image: linear-gradient(to bottom right, var(--green-light), var(--blue-light));  Previous */
+    background-image: linear-gradient(to bottom right, #0f68a9, #7ef29d);  /* New */
     font-size: 16px;
     color: var(--blue-dark);
     line-height: 1.5;
@@ -107,7 +107,8 @@ img{
     height: 600px;
     max-width: 100%;
     border-radius: 25%;
-    border: 1px solid var(--white-alpha-40);
+    border: 6px solid rgb(62, 169, 162);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
     vertical-align: middle;
 }
 
@@ -120,6 +121,11 @@ a{
 
 .hidden{
     display: none !important;
+}
+
+p{
+    color: rgb(38, 41, 48);
+    font-weight: 400;
 }
 
 /* *********************** */
@@ -145,7 +151,7 @@ button{
     overflow: hidden;
     vertical-align: middle;
     transition: color 0.5s ease-in;
-    color: #3f795a;
+    color: #044422;
 }
 
 .btn::before{
@@ -155,7 +161,7 @@ button{
     top: 0;
     height: 100%;
     width: 0%;
-    background-color: var(--main-color);
+    background-image: linear-gradient(to bottom right, #0f68a9, #7ef29d);
     z-index: -1;
     transition: width 0.5s ease-in;
 }
@@ -165,7 +171,8 @@ button{
 }
 
 .btn:hover{
-    color: var(--white);
+    color: black;
+    border: 1px solid black;
 }
 /* *********************** */
 
@@ -610,7 +617,9 @@ body.hide-scrolling{
 }
 
 .home-txt p{
-    font-size: 25px;
+    font-size: 29px;
+    color: #131414;
+    font-weight: 300;
 }
 
 .home-txt h1{
@@ -623,7 +632,7 @@ body.hide-scrolling{
     font-size: 25px;
     text-transform: capitalize;
     font-weight: 400;
-    color: #53537c;
+    color: #055445;
     margin: 0 0 30px;
 }
 
@@ -633,6 +642,9 @@ body.hide-scrolling{
     /* background-color: var(--green-light); */
     /* border-radius: 50%; */
     margin: auto;
+    border: 4px solid var(--white-alpha-25);
+    border-radius: 26%;
+    box-shadow: 2px 4px 5px black;
 }
 
 .home-txt .btn{
@@ -749,7 +761,8 @@ body.hide-scrolling{
 
 .about-txt .skill-item{
     background-color: var(--white-alpha-25);
-    border: 1px solid var(--white-alpha-40);
+    border: 2px solid var(--white-alpha-40);
+    color: #044422;
     padding: 5px 15px;
     text-transform: capitalize;
     margin: 0 10px 10px 0;
@@ -758,8 +771,9 @@ body.hide-scrolling{
 }
 
 .skill-item:hover{
-    background-color: var(--main-color);
-    color: var(--white);
+    background-image: linear-gradient(to bottom right, #0f68a9, #7ef29d);
+    color: black;
+    border: 1px solid black;
 }
 
 .about-tabs{
@@ -793,7 +807,7 @@ body.hide-scrolling{
     bottom: 0;
     width: 0%;
     height: 2px;
-    background-color: rgb(60, 122, 60);
+    background-color: rgb(8, 114, 8);
     transition: width 0.3s ease;
 }
 
@@ -803,11 +817,11 @@ body.hide-scrolling{
 
 .about-tabs .tab-item.active::before{
     width: 100%;
-    background-color: rgb(60, 122, 60);
+    background-color: rgb(8, 79, 8);
 }
 
 .about-tabs .tab-item.active{
-    color: rgb(43, 123, 43);
+    color: rgb(9, 85, 40);
     opacity: 1;
     cursor: auto;
 }
@@ -946,6 +960,7 @@ body.hide-scrolling{
 
 .skill-head{
     /* margin-bottom: 10px; */
+    font-size: 25px;
     margin-top: 40px;
     display: grid;
     place-items: center;
@@ -953,7 +968,7 @@ body.hide-scrolling{
 }
 
 .skill-head .border{
-    width: 130px;
+    width: 170px;
     height: 4px;
     background: #102d1d;
     margin: 1px auto;
@@ -970,7 +985,14 @@ body.hide-scrolling{
     /* margin-top: 10px; */
 }
 
+@media(min-width:1650px){
+    .skill-main{
+        padding: 50px;
+    }
+}
+
 .skill-main .skill-domain{
+    font-size: 20px;
     margin-bottom: 15px;
 }
 
@@ -1056,11 +1078,15 @@ body.hide-scrolling{
     margin: 5px 0 5px 0;
 }
 
+.skill-bar p{
+    font-weight: bold;
+}
+
 .skill-bar .bar span{
     width: 50%;
     height: 100%;
     position: absolute;
-    background: linear-gradient(135deg, rgb(40, 99, 53)0%, rgb(64, 172, 89)100%);
+    background: linear-gradient(135deg, rgb(45, 106, 120)0%, rgb(42, 159, 97)100%);
     border-radius: 25px;
 }
 
@@ -1347,6 +1373,10 @@ body.hide-scrolling{
     flex-direction: column;
 }
 
+.wrapper .card .text{
+    font-weight: bold;
+}
+
 .wrapper .card .circle{
     height: 130px;
     width: 130px;
@@ -1398,8 +1428,15 @@ body.hide-scrolling{
     }
 }
 
+@media (max-width:400px){
+    #skill-section .scroll-skills{
+        margin-top: 35px;
+    }
+}
+
+
 .testimonials .inner .scroll-testimonial{
-    margin-top: 30px;
+    margin-top: 25px;
 }
 
 /* Skill-section ends here */
@@ -1474,6 +1511,8 @@ body.hide-scrolling{
 .testimonial-card .testimonial-text{
     /* text-align: center; */
     text-align: justify;
+    color: #161f29;
+    font-weight: 400
 }
 
 /* @media screen and (max-width:820px){
@@ -1505,6 +1544,14 @@ body.hide-scrolling{
 .row.contact-details{
     display: flex;
     flex-wrap: wrap;
+}
+
+.contact-section .section-title .border{
+    width: 230px;
+    height: 4px;
+    background: #102d1d;
+    margin: 1px auto;
+    margin-bottom: 20px;
 }
 
 .contact-form,
@@ -1647,6 +1694,10 @@ body.hide-scrolling{
     .header .nav-inner{
         min-height: calc(100vh - 90px);
     }
+
+    .header .nav-toggle{
+        margin: 13px 12px;
+    }
 }
 
 @media(max-width:575px){
@@ -1664,6 +1715,10 @@ body.hide-scrolling{
 }
 
 @media(max-width:775px){
+    .header .nav-toggle{
+        margin: 13px 12px;
+    }
+
     .about-txt{
         margin-top: 25px;
     }
@@ -1679,6 +1734,14 @@ body.hide-scrolling{
 }
 
 @media(max-width:400px){
+    img{
+        height: 375px;
+    }
+
+    .header .nav-toggle{
+        margin: 5px 10px;
+    }
+
     .header .nav-inner ul li a{
         font-size: 25px;
     }
@@ -1693,6 +1756,15 @@ body.hide-scrolling{
     }
 
     .header .nav-inner{
-        min-height: calc(100vh - 150px);
+        min-height: calc(100vh - 80px);
+    }
+
+    .contact-info-item{
+        margin: 0 30px 25px;
+        padding: 0 0 0 15px;
+    }
+
+    .contact-info-item{
+        margin-left: 10px;
     }
 }
