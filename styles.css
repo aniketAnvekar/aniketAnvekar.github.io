@@ -1435,8 +1435,8 @@ body.hide-scrolling{
 }
 
 
-.testimonials .inner .scroll-testimonial{
-    margin-top: 25px;
+.scroll-skills{
+    margin-top: 40px;
 }
 
 /* Skill-section ends here */
@@ -1499,6 +1499,8 @@ body.hide-scrolling{
 
 .testimonial-card .name{
     font-size: 30px;
+    font-weight: 400;
+    color: rgb(18, 18, 83);
     text-transform: uppercase;
     margin: 20px 0;
 }
