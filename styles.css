@@ -1808,7 +1808,7 @@ body.hide-scrolling{
 
 @media screen and (min-width:401px) and (max-width:900px){
     .header .nav-inner{
-        min-height: calc(100vh - 100px);
+        min-height: calc(100vh - 120px);
     }
 }
 
@@ -1835,7 +1835,7 @@ body.hide-scrolling{
     }
 
     .header .nav-inner{
-        min-height: calc(100vh - 100px);
+        min-height: calc(100vh - 130px);
     }
 
     .contact-info-item{
