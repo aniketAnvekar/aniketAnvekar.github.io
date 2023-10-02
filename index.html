@@ -9,6 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-circle-progress/1.2.2/circle-progress.min.js"></script>
     <script src="https://kit.fontawesome.com/aedf671c46.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
 </head>
 <body>
     <!-- Page loader starts -->
@@ -219,12 +220,12 @@
             <div class="skill-main">
                 <div class="column">
                     <div class="skill-domain">
-                        <h3>Application Programming</h3>
+                        <h3>Programming</h3>
                     </div>
                     <div class="skill-bar">
                         <div class="info">
-                            <div class="tooltip-text" data-tip="OOP | Pandas | Numpy | Web Scraping(bs4, selenium) | Flask | Django">
-                                <p>Python</p>
+                            <div class="tooltip-text">
+                                <p>Python <span data-tip="OOP | Pandas | Numpy | Web Scraping(bs4, selenium) | Flask | Django"><i class="fa-solid fa-circle-info"></i></span></p>
                             </div>
                             <!-- <div class="tooltip">
                                 <span id="tooltip-text">OOP, Pandas, Numpy, Web Scraping(bs4, selenium), Flask</span>
@@ -238,8 +239,8 @@
                     </div>
                     <div class="skill-bar">
                         <div class="info">
-                            <div class="tooltip-text" data-tip="OOP | Templates | Inheritance | Pointers | STLs">
-                                <p>C++</p>
+                            <div class="tooltip-text">
+                                <p>C++ <span data-tip="OOP | Templates | Inheritance | Pointers | STLs"><i class="fa-solid fa-circle-info"></i></span></p>
                             </div>
                             <span class="percent">90%</span>
                         </div>
@@ -249,8 +250,8 @@
                     </div>
                     <div class="skill-bar">
                         <div class="info">
-                            <div class="tooltip-text" data-tip="Spring | Hadoop MapReduce | Android Studio">
-                                <p>Java</p>
+                            <div class="tooltip-text">
+                                <p>Java <span data-tip="Spring | Hadoop MapReduce | Android Studio"><i class="fa-solid fa-circle-info"></i></span></p>
                             </div>
                             <span class="percent">75%</span>
                         </div>
@@ -260,8 +261,8 @@
                     </div>
                     <div class="skill-bar">
                         <div class="info">
-                            <div class="tooltip-text" data-tip="ALV Reports | Smartforms | BAPIs">
-                                <p>SAP ABAP</p>
+                            <div class="tooltip-text">
+                                <p>SAP ABAP <span data-tip="ALV Reports | Smartforms | BAPIs"><i class="fa-solid fa-circle-info"></i></span></p>
                             </div>
                             <span class="percent">70%</span>
                         </div>
@@ -320,8 +321,8 @@
                     </div>
                     <div class="skill-bar">
                         <div class="info">
-                            <div class="tooltip-text" data-tip="Numpy | Pandas | Scikit-Learn | TensorFlow | Pytorch">
-                                <p>Machine Learning</p>
+                            <div class="tooltip-text">
+                                <p>Machine Learning <span data-tip="Numpy | Pandas | Scikit-Learn | TensorFlow | Pytorch"><i class="fa-solid fa-circle-info"></i></span></p>
                             </div>
                             <p class="percent">90%</p>
                         </div>
@@ -331,8 +332,8 @@
                     </div>
                     <div class="skill-bar">
                         <div class="info">
-                            <div class="tooltip-text" data-tip="Tokenization | NER | PoS | Spacy | NLTK">
-                                <p>NLP</p>
+                            <div class="tooltip-text">
+                                <p>NLP <span data-tip="Tokenization | NER | PoS | Spacy | NLTK"><i class="fa-solid fa-circle-info"></i></span></p>
                             </div>
                             <p class="percent">80%</p>
                         </div>
@@ -342,8 +343,8 @@
                     </div>
                     <div class="skill-bar">
                         <div class="info">
-                            <div class="tooltip-text" data-tip="Tableau | Power BI | Matplotlib | Seaborn">
-                                <p>Data Visualization</p>
+                            <div class="tooltip-text">
+                                <p>Data Visualization <span data-tip="Tableau | Power BI | Matplotlib | Seaborn"><i class="fa-solid fa-circle-info"></i></span></p>
                             </div>
                             <p class="percent">80%</p>
                         </div>
@@ -353,8 +354,8 @@
                     </div>
                     <div class="skill-bar">
                         <div class="info">
-                            <div class="tooltip-text" data-tip="ER-Diag | UML | Normalization | Postgres | MongoDB">
-                                <p>SQL</p>
+                            <div class="tooltip-text">
+                                <p>SQL <span data-tip="ER-Diag | UML | Normalization | Postgres | MongoDB"><i class="fa-solid fa-circle-info"></i></span></p>
                             </div>
                             <p class="percent">75%</p>
                         </div>
@@ -367,12 +368,12 @@
 
                 <div class="column">
                     <div class="skill-domain">
-                        <h3>Cloud Computing & DevOps</h3>
+                        <h3>Cloud & DevOps</h3>
                     </div>
                     <div class="skill-bar">
                         <div class="info">
-                            <div class="tooltip-text" data-tip="EC2 | S3 | IAM | Lambda | DynamoDB">
-                                <p>AWS</p>
+                            <div class="tooltip-text">
+                                <p>AWS <span data-tip="EC2 | S3 | IAM | Lambda | DynamoDB"><i class="fa-solid fa-circle-info"></i></span></p>
                             </div>
                             <p class="percent">80%</p>
                         </div>
@@ -382,8 +383,8 @@
                     </div>
                     <div class="skill-bar">
                         <div class="info">
-                            <div class="tooltip-text" data-tip="Azure VM | Blob Storage | Azure Functions">
-                                <p>Microsoft Azure</p>
+                            <div class="tooltip-text">
+                                <p>Microsoft Azure <span data-tip="Azure VM | Blob Storage | Azure Functions"><i class="fa-solid fa-circle-info"></i></span></p>
                             </div> 
                             <p class="percent">75%</p>
                         </div>
@@ -463,10 +464,11 @@
                     <div class="border"></div>
 
                     <div class="row">
-                        <div class="col">
+                        <!-- <div class="col">
                             <div class="testimonial-card">
                                 <img class="rutgers-img" src="./Images/Rutgers1.png" alt="Rutgers University">
                                 <div class="name">Full Name 1</div>
+                                <div class="person-title"></div>
                                 <div class="stars">
                                     <i class="fas fa-star"></i>
                                     <i class="far fa-star"></i>
@@ -480,40 +482,9 @@
 
                         <div class="col">
                             <div class="testimonial-card">
-                                <img class="rutgers-img" src="./Images/Rutgers1.png"" alt="Rutgers University">
-                                <div class="name">Full Name 2</div>
-                                <div class="stars">
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </div>
-                                <div class="testimonial-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam quod itaque ipsa mollitia quisquam qui quidem provident ratione a, earum ipsam quo illum incidunt blanditiis dolore recusandae debitis maiores sapiente.</div>
-                                <!-- <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda corporis vel voluptatibus obcaecati vero vitae accusamus? Aspernatur ad quae, nesciunt rerum nulla vitae minima rem molestias in possimus, amet sint.</p> -->
-                                <span class="quote"><i class="fa fa-quote-left"></i></span>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="testimonial-card">
-                                <img class="rutgers-img" src="./Images/Rutgers1.png"" alt="Rutgers University">
-                                <div class="name">Full Name 3</div>
-                                <div class="stars">
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </div>
-                                <div class="testimonial-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam quod itaque ipsa mollitia quisquam qui quidem provident ratione a, earum ipsam quo illum incidunt blanditiis dolore recusandae debitis maiores sapiente.</div>                                <span class="quote"><i class="fa fa-quote-left"></i></span>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="testimonial-card">
                                 <img src="./Images/TCS-logo.jpg" alt="Rutgers University">
-                                <div class="name">Full Name 4</div>
+                                <div class="name"></div>
+                                <div class="person-title"></div>
                                 <div class="stars">
                                     <i class="far fa-star"></i>
                                     <i class="far fa-star"></i>
@@ -523,12 +494,47 @@
                                 </div>
                             <div class="testimonial-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam quod itaque ipsa mollitia quisquam qui quidem provident ratione a, earum ipsam quo illum incidunt blanditiis dolore recusandae debitis maiores sapiente.</div>                                <span class="quote"><i class="fa fa-quote-left"></i></span>
                             </div>
+                        </div> -->
+
+                        <div class="col">
+                            <div class="testimonial-card">
+                                <img class="rutgers-img" src="./Images/Rutgers1.png"" alt="Rutgers University">
+                                <div class="name">Anushka Joshi</div>
+                                <div class="person-title">Honors Student at RBS</div>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="testimonial-text">Aniket’s work ethic as an educator stood out while teaching skills such as HTML, Javascript, and CSS. Aniket did an exceptional job breaking down complex concepts into understandable bits through the use of real world examples. As a supportive educator, Aniket created a positive learning environment where students felt comfortable asking questions and were not afraid to challenge themselves. Through his role as an educator, Aniket helped develop a great appreciation for Computer Science and the increasing value it has in the world today.</div>
+                                <!-- <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda corporis vel voluptatibus obcaecati vero vitae accusamus? Aspernatur ad quae, nesciunt rerum nulla vitae minima rem molestias in possimus, amet sint.</p> -->
+                                <span class="quote"><i class="fa fa-quote-left"></i></span>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="testimonial-card">
+                                <img class="rutgers-img" src="./Images/Rutgers1.png"" alt="Rutgers University">
+                                <div class="name">Prof. Alan Belowich</div>
+                                <div class="person-title">Associate Professor</div>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="testimonial-text">Aniket Anvekar was working as a part-time lecturer for the course Principles of Computer Science during the Fall 2022 semester under my supervision. Aniket's exceptional teaching skills and dedication to student success stood out prominently. His ability to connect with students, create an inclusive learning environment, and provide unwavering support made him one of the best teaching assistants I have worked with during my 20-year tenure at the university. I hold unwavering confidence in Aniket's capacity to not just excel but truly thrive in any role he chooses to embrace.</div>                                <span class="quote"><i class="fa fa-quote-left"></i></span>
+                            </div>
                         </div>
 
                         <div class="col">
                             <div class="testimonial-card">
                                 <img src="./Images/TCS-logo.jpg" alt="Rutgers University">
                                 <div class="name">Sanjyot Desphande</div>
+                                <div class="person-title">Associate Consultant</div>
                                 <div class="stars">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -544,6 +550,7 @@
                             <div class="testimonial-card">
                                 <img src="./Images/Rizvi-logo.jpeg" alt="Rutgers University">
                                 <div class="name">Prof. Shaikh Mohd Ashfaque</div>
+                                <div class="person-title">Associate Professor</div>
                                 <div class="stars">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -577,22 +584,33 @@
                 </div>
                 <div class="row contact-details">
                     <div class="contact-form">
-                        <form>
+                        <form name="contactForm" id="cform">
                             <div class="row">
                                 <div class="input-group">
-                                    <input type="text" placeholder="Name" class="input-control" required>
+                                    <input type="text" placeholder="Name" id="name" class="input-control" required>
                                 </div>
                                 <div class="input-group">
-                                    <input type="text" placeholder="Email" class="input-control" required>
+                                    <input type="text" placeholder="Email" id="email" class="input-control" required>
+                                </div>
+                                <div class="input-group otp-subgroup-send-btn">
+                                    <button onclick="sendOTP()" class="btn" id="otp-btn-send">Send OTP</button>
+                                </div>
+                                <div class="input-group otp-text">
+                                    Enter the OTP below to verify Email:
+                                </div>
+                                <div class="input-group otp-subgroup">
+                                    <input type="text" id="otp-verify" class="input-control" required>
+                                    <button class="btn" id="otp-btn-verify">Verify</button>
                                 </div>
                                 <div class="input-group">
-                                    <input type="text" placeholder="Subject" class="input-control" required>
+                                    <input type="text" placeholder="Subject" id="title" class="input-control" required disabled>
                                 </div>
                                 <div class="input-group">
-                                    <textarea placeholder="Message" class="input-control" required></textarea>
+                                    <textarea placeholder="Message" id="message" class="input-control" required></textarea>
                                 </div>
                                 <div class="submit-btn">
-                                    <button type="button" class="btn">Send Message</button>
+                                    <!-- <input type="submit" name="Send Message" id="contact-btn" disabled="disabled"> -->
+                                    <button type="button" class="btn contact-btn" id="contact-btn" disabled>Send Message</button>
                                 </div>
                             </div>
                         </form>
@@ -604,15 +622,15 @@
                         </div>
                         <div class="contact-info-item">
                             <h3>Contact</h3>
-                            <p>+1 (201)-920-****</p>
+                            <p>+1 (201)-920-4974</p>
                         </div>
                         <div class="contact-info-item">
                             <h3>Follow Me</h3>
                             <div class="social-links">
-                                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-                                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                                <a class="fb-color" href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                <a class="linkedin-color" href="https://www.linkedin.com/in/aniketanvekar/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                                <a class="github-color" href="https://github.com/aniketAnvekar" target="_blank"><i class="fab fa-github"></i></a>
+                                <a class="insta-color" href="https://instagram.com/anvekar__aniket25?igshid=OGQ5ZDc2ODk2ZA==" target="_blank"><i class="fab fa-instagram"></i></a>
                                 
                             </div>
                         </div>
@@ -678,6 +696,60 @@
         backSpeed:30,
         backdelay:500,
         loop:true
+    })
+
+    // Contact form
+    function validateForm() {
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var title = document.getElementById("title").value;
+        var message = document.getElementById("message").value;
+
+        if (name === "" || email === "" || title === "" || message === "") {
+            alert("Please fill out all fields before submitting.");
+            return false;
+        }
+
+        // Additional validation logic can be added here if needed
+
+        return true; // Form submission will proceed
+    }
+
+    // Enable the "Send Message" button when all required fields are filled
+    document.addEventListener("input", function () {
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var title = document.getElementById("title").value;
+        var message = document.getElementById("message").value;
+        var submitButton = document.getElementById("contact-btn");
+
+        if (name !== "" && email !== "" && title !== "" && message !== "") {
+            submitButton.removeAttribute("disabled");
+        } else {
+            submitButton.setAttribute("disabled", "disabled");
+        }
+    });
+
+    // Contact form
+    var contact_btn = document.getElementById('contact-btn');
+    contact_btn.addEventListener('click', function(e){
+        e.preventDefault()
+        var contact_name = document.getElementById('name').value;
+        var contact_email = document.getElementById('email').value;
+        var contact_subject = document.getElementById('title').value;
+        var contact_message = document.getElementById('message').value;
+        var contact_body = 'Name: '+contact_name+'<br/>Email: '+contact_email+'<br/>Subject: '+contact_subject+'<br/>Message: '+contact_message;
+
+        Email.send({
+            SecureToken : "506a1537-917c-48d3-af05-80a6c441f38d",
+            To : 'aniketanvekara@gmail.com',
+            From : "aniket.va25@gmail.com",
+            Subject : "New Message || Directed via Portfolio",
+            Body : contact_body
+        }).then(
+        message => alert('Sent! You will receive a response in 2-3 business days.')
+        );
+        document.getElementById('cform').reset();
     })
 
     </script>

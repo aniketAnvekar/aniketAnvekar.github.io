@@ -127,3 +127,46 @@ function startAnimations() {
   // Call the function to start the animations when the page loads
   window.onload = startAnimations;
   
+
+
+//   OTP verification starts here
+
+function sendOTP(){
+    const email = document.getElementById('email');
+    const otpverify = document.getElementsByClassName('otp-subgroup')[0];
+
+    let random_otp = Math.floor(Math.random()*10000);
+    var contact_body = '<h2>Your One Time Password is - '+random_otp+'</h2>';
+
+    Email.send({
+        SecureToken : "506a1537-917c-48d3-af05-80a6c441f38d",
+        To : email.value,
+        From : "aniket.va25@gmail.com",
+        Subject : "Your OTP is here || Directed via Portfolio",
+        Body : contact_body
+    }).then(
+    message => {
+        if(message === "OK"){
+            alert("OTP successfully sent to the entered email");
+        }
+        
+        const otp_input = document.getElementById('otp-verify');
+        const otp_verify_btn = document.getElementById('otp-btn-verify');
+        const contact_btn = document.getElementsByClassName('contact-btn');
+
+        otp_verify_btn.addEventListener("click", ()=>{
+            if(otp_input.value == random_otp){
+                alert("Email successfully verified!");
+                document.getElementById('title').removeAttribute('disabled');
+                // contact_btn.style.display = "block";
+            }
+            else{
+                alert("Email cannot be verified. Please try again!");
+            }
+        })
+    }
+    );
+}
+
+
+

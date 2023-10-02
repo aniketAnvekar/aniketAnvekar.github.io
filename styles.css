@@ -1003,7 +1003,7 @@ body.hide-scrolling{
     /* padding: 0 7px; */
 }
 
-.tooltip-text{
+.tooltip-text i{
     cursor: pointer;
 }
 
@@ -1023,7 +1023,7 @@ body.hide-scrolling{
     border-bottom: 5px solid #1a1a1a;   
     position:absolute;
     top:18px;
-    left:15px;
+    left:2px;
     z-index:8;
     font-size:0;
     line-height:0;
@@ -1037,7 +1037,7 @@ body.hide-scrolling{
     content:attr(data-tip);
     position:absolute;
     top:22px;
-    left:0px;
+    left:-20px;
     padding:5px 8px;
     background:#050604af;
     color:#f0ecec;
@@ -1063,6 +1063,11 @@ body.hide-scrolling{
 [data-tip]:hover:before,
 [data-tip]:hover:after {
     display:block;
+}
+
+
+.fa-circle-info{
+    font-size: small;
 }
 
 .skill-bar .info .percent{
@@ -1362,6 +1367,8 @@ body.hide-scrolling{
     column-gap: 30px;
 }
 
+
+
 .wrapper .card{
     width: calc(25%);
     height: 200px;
@@ -1434,10 +1441,22 @@ body.hide-scrolling{
     }
 }
 
-
-.scroll-skills{
-    margin-top: 40px;
+@media screen and (min-width: 700px) and (max-width: 900px){
+    .wrapper{
+        margin-top: -130px;
+    }
+    .scroll-skills{
+        margin-top: -50px;
+    }
+    
 }
+
+@media screen and (min-width:1000px){
+    .scroll-skills{
+        margin-top: 40px;
+    }
+}
+
 
 /* Skill-section ends here */
 
@@ -1455,12 +1474,16 @@ body.hide-scrolling{
     padding: 0 20px;
 }
 
+.testimonials .inner h1{
+    font-size: 40px;
+}
+
 .testimonials .inner .border{
-    width: 160px;
+    width: 235px;
     height: 5px;
     background: #102d1d;
-    margin: 5px auto;
-    margin-bottom: 20px;
+    margin: 1px auto;
+    margin-bottom: 25px;
 }
 
 .testimonials .inner .row{
@@ -1491,6 +1514,11 @@ body.hide-scrolling{
     width: 100px;
     height: 100px;
     border: 2px solid black;
+}
+
+.person-title{
+    margin-top: -19px;
+    margin-bottom: 10px;
 }
 
 .rutgers-img{
@@ -1524,11 +1552,17 @@ body.hide-scrolling{
     }
 } */
 
-@media screen and (max-width:739px){
+@media screen and (max-width:975px){
     .testimonials .inner .row .col{
         flex: 100%;
         max-width: 100%;
         padding: 10px;
+    }
+}
+
+@media screen and (max-width:500px){
+    .testimonials .inner{
+        margin-top: 20px;
     }
 }
 /* Testimonial section ends here */
@@ -1571,6 +1605,24 @@ body.hide-scrolling{
     color: var(--blue-dark);
     opacity: 0.8;
     font-weight: 300;
+}
+
+.contact-form .otp-subgroup{
+    /* margin-top: 5px; */
+    width: 50%;
+}
+
+.contact-form .otp-text{
+    margin: -9px 0 2px 5px;
+}
+
+#otp-btn-send{
+    margin: -5px 0 -5px 0;
+}
+
+#otp-btn-verify{
+    margin-top: 9px;
+    /* height: 10px; */
 }
 
 .contact-form .input-control{
@@ -1624,10 +1676,29 @@ body.hide-scrolling{
     transition: all 0.3s ease;
 }
 
-.contact-info-item .social-links a:hover{
+.contact-info-item .social-links a.fb-color:hover{
     color: white;
-    background: #3f795a;
+    background: #454ece;
 }
+
+.contact-info-item .social-links a.linkedin-color:hover{
+    color: white;
+    background: #619ad3;
+}
+
+.contact-info-item .social-links a.github-color:hover{
+    color: white;
+    background: #0f1010;
+}
+
+.contact-info-item .social-links a.insta-color:hover{
+    color: white;
+    background: #832c76;
+}
+
+/* .contact-btn{
+    
+} */
 
 @media screen and (max-width:810px) {
     .row.contact-details{
@@ -1735,7 +1806,13 @@ body.hide-scrolling{
     }
 }
 
-@media(max-width:400px){
+@media screen and (min-width:401px) and (max-width:900px){
+    .header .nav-inner{
+        min-height: calc(100vh - 90px);
+    }
+}
+
+@media screen and (max-width:400px){
     img{
         height: 375px;
     }
@@ -1758,7 +1835,7 @@ body.hide-scrolling{
     }
 
     .header .nav-inner{
-        min-height: calc(100vh - 80px);
+        min-height: calc(100vh - 95px);
     }
 
     .contact-info-item{
