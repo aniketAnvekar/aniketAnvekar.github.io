@@ -232,7 +232,7 @@ body.hide-scrolling{
     height: 20px;
     width: 20px;
     border-radius: 50%;
-    background: linear-gradient(-135deg,rgb(144, 227, 144),rgb(255, 255, 255));
+    background: linear-gradient(-135deg,#a4f3a4,rgb(148, 143, 143));
     animation: animate 15s linear infinite;
 }
 
@@ -1533,7 +1533,7 @@ body.hide-scrolling{
 }
 
 .testimonial-card .stars{
-    color: #18221495;
+    color: #7a58219f;
     margin-bottom: 10px;
 }
 
