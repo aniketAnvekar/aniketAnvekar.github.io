@@ -3,45 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aniket Anvekar - Personal Portfolio</title>
+    <title>Aniket Anvekar - Interactive Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-circle-progress/1.2.2/circle-progress.min.js"></script>
     <script src="https://kit.fontawesome.com/aedf671c46.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
 </head>
 <body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
     <!-- Page loader starts -->
-    <div class="page-loader">
-        <div></div>
-        <div></div>
-        <div></div>
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <h3>Loading Portfolio...</h3>
+            <p>Preparing an amazing experience</p>
+            <div class="loading-progress">
+                <div class="loading-bar"></div>
+            </div>
+        </div>
     </div>
     <!-- Page loader ends -->
 
+    <!-- Animated Background -->
     <div class="bg-design">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+        <div class="floating-shapes">
+            <span class="shape"></span>
+            <span class="shape"></span>
+            <span class="shape"></span>
+            <span class="shape"></span>
+            <span class="shape"></span>
+            <span class="shape"></span>
+            <span class="shape"></span>
+            <span class="shape"></span>
+            <span class="shape"></span>
+            <span class="shape"></span>
+            <span class="shape"></span>
+        </div>
     </div>
+
+    <!-- Floating Navigation -->
+    <nav class="floating-nav" id="floatingNav">
+        <ul>
+            <li><a href="#home" class="nav-dot active" data-section="0">
+                <span class="nav-tooltip">Home</span>
+                <i class="fas fa-home nav-icon"></i>
+            </a></li>
+            <li><a href="#about" class="nav-dot" data-section="1">
+                <span class="nav-tooltip">About</span>
+                <i class="fas fa-user nav-icon"></i>
+            </a></li>
+            <li><a href="#skill-section" class="nav-dot" data-section="2">
+                <span class="nav-tooltip">Skills</span>
+                <i class="fas fa-code nav-icon"></i>
+            </a></li>
+            <li><a href="#testimonial" class="nav-dot" data-section="3">
+                <span class="nav-tooltip">Testimonials</span>
+                <i class="fas fa-quote-left nav-icon"></i>
+            </a></li>
+            <li><a href="#contact" class="nav-dot" data-section="4">
+                <span class="nav-tooltip">Contact</span>
+                <i class="fas fa-envelope nav-icon"></i>
+            </a></li>
+        </ul>
+    </nav>
+
+    <!-- Auto-scroll Control
+    <div class="auto-scroll-control" id="autoScrollToggle">
+        <i class="fas fa-pause" id="scrollIcon"></i>
+        <span class="scroll-text">Auto</span>
+    </div> -->
+
+    <!-- Scroll Progress Indicator -->
+    <!-- <div class="scroll-indicator" id="scrollIndicator">
+        <div class="scroll-mouse">
+            <div class="scroll-wheel"></div>
+        </div>
+        <div class="scroll-text">Scroll or wait for auto-navigation</div>
+        <div class="auto-timer">
+            <div class="timer-circle">
+                <div class="timer-fill"></div>
+                <span class="timer-text">8s</span>
+            </div>
+        </div>
+    </div> -->
 
     <div class="overlay">
         <!-- activate the overlay to avoid multiple clicks -->
     </div>
 
-    <div class="main hidden">
+    <div class="main" id="main">
 
         <!-- Header starts -->
-        <header class="header">
+        <!-- <header class="header">
             <div class="container">
                 <div class="row">
                     <button type="button" class="nav-toggle">
@@ -50,75 +109,134 @@
                     <nav class="nav-items">
                         <div class="nav-inner">
                             <ul>
-                            <li><a href="#home" class="nav-item link-item">Home</a></li>
-                            <li><a href="#about" class="nav-item link-item">About</a></li>
-                            <li><a href="#skill-section" class="nav-item link-item">Skills</a></li>
-                            <li><a href="#testimonial" class="nav-item link-item">Testimonial</a></li>
-                            <li><a href="#contact" class="nav-item link-item">Contact</a></li>
+                                <li><a href="#home" class="nav-item link-item">Home</a></li>
+                                <li><a href="#about" class="nav-item link-item">About</a></li>
+                                <li><a href="#skill-section" class="nav-item link-item">Skills</a></li>
+                                <li><a href="#testimonial" class="nav-item link-item">Testimonial</a></li>
+                                <li><a href="#contact" class="nav-item link-item">Contact</a></li>
                             </ul>
                         </div>
                     </nav>
                 </div>
             </div>
-        </header>
+        </header> -->
         <!-- Header ends -->
 
         <!-- Home section start -->
-        <section class="home-section align-items-center" id="home">
+        <section class="home-section align-items-center section-page" id="home" data-section="0">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="home-txt">
-                        <p>Hello, It's Me</p>
-                        <h1>Aniket Vinesh Anvekar</h1>
-                        <h2>I'm a <span class="input-desc"></span></h2>
-                        <a href="#about" class="btn link-item">About Me</a>
-                        <a href="#contact" class="btn link-item">Contact Me</a>
+                        <p class="greeting animate-text">Hello, It's Me</p>
+                        <h1 class="name animate-text">Aniket Vinesh Anvekar</h1>
+                        <h2 class="role animate-text">I'm a <span class="input-desc"></span></h2>
+                        <div class="social-preview animate-text">
+                            <div class="social-links-home">
+                                <a href="https://www.linkedin.com/in/aniketanvekar/" target="_blank" class="social-link">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="https://github.com/aniketAnvekar" target="_blank" class="social-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://instagram.com/anvekar__aniket25" target="_blank" class="social-link">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="home-buttons animate-text">
+                            <a href="#about" class="btn btn-primary link-item">About Me</a>
+                            <a href="#contact" class="btn btn-secondary link-item">Contact Me</a>
+                            <a href="Documents/Aniket_Anvekar_Resume(8-05).pdf" target="_blank" class="btn btn-outline">
+                                <i class="fas fa-download"></i> Resume
+                            </a>
+                        </div>
                     </div>
                     <div class="home-pic">
-                        <div class="img-box">
-                            <img src="Images/Aniket-IMG2.png" alt="Aniket Image">
+                        <div class="img-box parallax-element">
+                            <div class="image-frame">
+                                <img src="Images/Aniket-IMG2.png" alt="Aniket Image" class="profile-image">
+                                <div class="image-overlay">
+                                    <div class="floating-elements">
+                                        <div class="float-icon"><i class="fas fa-code"></i></div>
+                                        <div class="float-icon"><i class="fas fa-laptop-code"></i></div>
+                                        <div class="float-icon"><i class="fas fa-database"></i></div>
+                                        <div class="float-icon"><i class="fab fa-python"></i></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <!-- <div class="contact-info-item">
-                        <h3>Follow Me</h3>
-                        <div class="social-links">
-                            <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                            
-                        </div>
-                    </div> -->
                 </div>
+                <!-- Auto-scroll indicator for this section -->
+                <!-- <div class="section-auto-scroll">
+                    <div class="scroll-hint">
+                        <div class="scroll-arrow bounce">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <span class="next-section">Next: About</span>
+                    </div>
+                </div> -->
             </div>
         </section>
         <!-- Home section ends -->
 
         <!-- About section starts -->
-        <section class="about-section sec-padding" id="about">
+        <section class="about-section sec-padding section-page" id="about" data-section="1">
             <div class="container">
                 <div class="row">
                     <div class="section-title">
-                        <h2>About Me</h2>
+                        <h2 class="section-heading">About Me</h2>
                         <div class="border"></div>
+                        <p class="section-subtitle">Discover my journey and passion</p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="about-img">
-                        <div class="img-box">
+                        <div class="img-box parallax-element">
                             <img src="Images/Aniket-IMG2.png" alt="Aniket Image">
+                            <div class="achievement-badges">
+                                <div class="badge">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>MS Computer Science</span>
+                                </div>
+                                <div class="badge">
+                                    <i class="fas fa-briefcase"></i>
+                                    <span>3+ Years Experience</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="about-txt">
                         <div class="aboutme-container">
                             <input type="checkbox" id="check">
-                            <p>I am a Computer Science graduate student at Rutgers University, located in the vibrant state of New Jersey, USA.</p>
+                            <p class="intro-text">I am a Computer Science graduate student at Rutgers University, located in the vibrant state of New Jersey, USA.</p>
                             <div class="more-content">
                                 <p>Through my academic journey and professional endeavors, I have embraced challenges that honed my problem-solving prowess and acquired resume-enhancing skills. My enthusiasm for Computer Science has skyrocketed over the last 8 years, compelling me to pursue a master's degree.</p>
-                                <p>Beyond studies and work, I am an avid explorer of global history and religions, with a deep passion for diverse cuisines that satisfies the inner foodie in me.</p> 
+                                <p>Beyond studies and work, I am an avid explorer of global history and religions, with a deep passion for diverse cuisines that satisfies the inner foodie in me.</p>
                             </div>
-                            <label for="check">Read More</label>
+                            <label for="check" class="read-more-btn">Read More</label>
                         </div>
+
+                        <!-- Interactive Stats -->
+                        <div class="stats-container">
+                            <div class="stat-item">
+                                <div class="stat-number" data-count="8">0</div>
+                                <div class="stat-label">Years Experience</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" data-count="50">0</div>
+                                <div class="stat-label">Projects Completed</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" data-count="15">0</div>
+                                <div class="stat-label">Technologies</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" data-count="3">0</div>
+                                <div class="stat-label">Certifications</div>
+                            </div>
+                        </div>
+
                         <h3>Top Skills</h3>
                         <div class="skills">
                             <div class="skill-item">Data Structures & Algorithms</div>
@@ -130,455 +248,644 @@
                         </div>
 
                         <div class="about-tabs">
-                                <button type="button" class="tab-item active" data-target="#education">Education</button>
-                                <button type="button" class="tab-item" data-target="#experience">Work Experience</button>
+                            <button type="button" class="tab-item active" data-target="#education">
+                                <i class="fas fa-graduation-cap"></i>Education
+                            </button>
+                            <button type="button" class="tab-item" data-target="#experience">
+                                <i class="fas fa-briefcase"></i>Work Experience
+                            </button>
                         </div>
 
                         <!-- Education starts -->
                         <div class="tab-content active" id="education">
                             <div class="timeline">
                                 <div class="timeline-item">
-                                    <span class="date">Sep 2022- May 2024</span>
-                                    <h4>Master of Science in Computer Science <span style="display: block; font-size: smaller;">Rutgers University, New Brunswick</span></h4>
-                                    <p><strong>Coursework</strong> - Software Engineering, Mathematical Foundation of Data Science, Massive Data Mining, Computer Vision, Machine Learning</p>
-                                    <p>GPA - 3.65/4.0</p>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <span class="date">Sep 2022- May 2024</span>
+                                        <h4>Master of Science in Computer Science 
+                                            <span class="institution">Rutgers University, New Brunswick</span>
+                                        </h4>
+                                        <p><strong>Coursework</strong> - Software Engineering, Mathematical Foundation of Data Science, Massive Data Mining, Computer Vision, Machine Learning</p>
+                                        <p class="gpa">GPA - 3.65/4.0</p>
+                                    </div>
                                 </div>
                                 <div class="timeline-item">
-                                    <span class="date">Aug 2015 - May 2019</span>
-                                    <h4>Bachelor of Engineering in Computer Engineering <span style="display: block; font-size: smaller;">University of Mumbai</span></h4>
-                                    <p><strong>Coursework</strong> - Data Structures & Analysis of Algorithm, Operating System, Computer Networks, Object Oriented Programming</p>
-                                    <p>GPA - 3.5/4.0</p>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <span class="date">Aug 2015 - May 2019</span>
+                                        <h4>Bachelor of Engineering in Computer Engineering 
+                                            <span class="institution">University of Mumbai</span>
+                                        </h4>
+                                        <p><strong>Coursework</strong> - Data Structures & Analysis of Algorithm, Operating System, Computer Networks, Object Oriented Programming</p>
+                                        <p class="gpa">GPA - 3.5/4.0</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <!-- Education ends -->
 
                         <!-- Experience starts -->
-
                         <div class="tab-content" id="experience">
                             <div class="timeline">
                                 <div class="timeline-item">
-                                    <span class="date">July 2023 - Nov 2023</span>
-                                    <h4>Full Stack Developer, Intern <span style="display: block; font-size:smaller;">Samaritan Scout, NJ-US</span></h4>
-                                    <ul>
-                                        <li><p style="text-align: justify;">Developed an LLM web scraper pipeline to automate volunteer data extraction from 500+ NJ organizations, improving crawler accuracy by 40% using prompt engineering with GPT-3.5 and PaLM.</p></li>
-                                        <li><p style="text-align: justify;">Leveraged normalization to design database models, improving query performance by 1000ms, and deployed a scalable crawler on AWS Lambdas with REST APIs using Node.js and Express.</p></li>
-                                        <li><p><strong>Technology used</strong> - Python, OpenAI, Langchain, SQL, React.js, AWS</p></li>
-                                    </ul>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <span class="date">July 2023 - Nov 2023</span>
+                                        <h4>Full Stack Developer, Intern 
+                                            <span class="institution">Samaritan Scout, NJ-US</span>
+                                        </h4>
+                                        <ul class="achievements">
+                                            <li>Developed an LLM web scraper pipeline to automate volunteer data extraction from 500+ NJ organizations, improving crawler accuracy by 40% using prompt engineering with GPT-3.5 and PaLM.</li>
+                                            <li>Leveraged normalization to design database models, improving query performance by 1000ms, and deployed a scalable crawler on AWS Lambdas with REST APIs using Node.js and Express.</li>
+                                            <li><strong>Technology used</strong> - Python, OpenAI, Langchain, SQL, React.js, AWS</li>
+                                        </ul>
+                                    </div>
                                 </div>
                                 <div class="timeline-item">
-                                    <span class="date">Aug 2022 - Present</span>
-                                    <h4>Teaching Assistant <span style="display: block; font-size:smaller;">Rutgers University, NJ-US</span></h4>
-                                    <ul>
-                                        <li><p>Part-Time Lecturer & Grader for the courses CS110(Principles of Computer Science), CS170(Computer Application for Business), and CS210(Data Management for Data Science)</p></li>
-                                        <li><p><strong>Technology taught</strong> - Scratch Programming, HTML/CSS, JavaScript, Excel, Database, MySQL, Python, Pandas, NumPy, Machine Learning</p></li>
-                                    </ul>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <span class="date">Aug 2022 - Present</span>
+                                        <h4>Teaching Assistant 
+                                            <span class="institution">Rutgers University, NJ-US</span>
+                                        </h4>
+                                        <ul class="achievements">
+                                            <li>Part-Time Lecturer & Grader for the courses CS110(Principles of Computer Science), CS170(Computer Application for Business), and CS210(Data Management for Data Science)</li>
+                                            <li><strong>Technology taught</strong> - Scratch Programming, HTML/CSS, JavaScript, Excel, Database, MySQL, Python, Pandas, NumPy, Machine Learning</li>
+                                        </ul>
+                                    </div>
                                 </div>
                                 <div class="timeline-item">
-                                    <span class="date">Aug 2019 - Aug 2022</span>
-                                    <h4>Software Engineer <span style="display: block; font-size: smaller;">Tata Consultancy Services, MH-IN</span></h4>
-                                    <ul>
-                                        <li><p>Projects worked on - Web Scraper, Speech to Text Model, Data extraction from documents(PDFs, Images)</p></li>
-                                        <li><p>Clients worked for - Reserve Bank of India, Bobst Manufacturing, TCS Decision Fabric</p></li>
-                                        <li><p>Technology used - Python, Beautiful Soup, Selenium, AWS, Pandas, Machine Learning, Kaldi, Javascript</p></li>
-                                    </ul>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <span class="date">Aug 2019 - Aug 2022</span>
+                                        <h4>Software Engineer 
+                                            <span class="institution">Tata Consultancy Services, MH-IN</span>
+                                        </h4>
+                                        <ul class="achievements">
+                                            <li>Projects worked on - Web Scraper, Speech to Text Model, Data extraction from documents(PDFs, Images)</li>
+                                            <li>Clients worked for - Reserve Bank of India, Bobst Manufacturing, TCS Decision Fabric</li>
+                                            <li>Technology used - Python, Beautiful Soup, Selenium, AWS, Pandas, Machine Learning, Kaldi, Javascript</li>
+                                        </ul>
+                                    </div>
                                 </div>
                                 <div class="timeline-item">
-                                    <span class="date">Aug 2018 - Oct 2018</span>
-                                    <h4>Data Science, Intern <span style="display: block; font-size: smaller;">Develearn Institute, MH-IN</span></h4>
-                                    <ul>
-                                        <li><p>Collaborated with the development team in developing a POC for QnA Chatbot</p></li>
-                                        <li><p>Technology used - Python, NLP, TensorFlow, RestAPIs</p></li>
-                                    </ul>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <span class="date">Aug 2018 - Oct 2018</span>
+                                        <h4>Data Science, Intern 
+                                            <span class="institution">Develearn Institute, MH-IN</span>
+                                        </h4>
+                                        <ul class="achievements">
+                                            <li>Collaborated with the development team in developing a POC for QnA Chatbot</li>
+                                            <li>Technology used - Python, NLP, TensorFlow, RestAPIs</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
                         <!-- Experience ends -->
 
-                        <a href="Documents/Aniket_Anvekar_Resume(8-05).pdf" target="_blank" class="btn">download CV</a>
-                        <a href="#contact" class="btn link-item">Contact me</a>
+                        <div class="action-buttons">
+                            <a href="Documents/Aniket_Anvekar_Resume(8-05).pdf" target="_blank" class="btn btn-primary">
+                                <i class="fas fa-download"></i> Download CV
+                            </a>
+                            <a href="#contact" class="btn btn-secondary link-item">
+                                <i class="fas fa-envelope"></i> Contact me
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <a href="#skill-section" class="scroll-link scroll-below">
-                        <!-- <div class="scroll-below"></div> -->
-                    </a>
+                <div class="section-auto-scroll">
+                    <div class="scroll-hint">
+                        <div class="scroll-arrow bounce">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <span class="next-section">Next: Skills</span>
+                    </div>
                 </div>
             </div>
         </section>
         <!-- About section ends -->
 
+        
         <!-- Technical skills analysis starts -->
-
-        <section id="skill-section" class="">
-            <div class="skill-head">
-                <h2>Top <span>Skills</span></h2>
-                <div class="border"></div>
-                <p>Here is the detailed analysis of my skillset.</p>
-            </div>
-
-            <div class="skill-main">
-                <div class="column">
-                    <div class="skill-domain">
-                        <h3>Programming</h3>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="info">
-                            <div class="tooltip-text">
-                                <p>Python <span data-tip="OOP | Pandas | Numpy | Web Scraping(bs4, selenium) | Flask | Django"><i class="fa-solid fa-circle-info"></i></span></p>
-                            </div>
-                            <!-- <div class="tooltip">
-                                <span id="tooltip-text">OOP, Pandas, Numpy, Web Scraping(bs4, selenium), Flask</span>
-                                <span class="tooltip-label">Python</span>
-                            </div> -->
-                            <span class="percent">90%</span>
-                        </div>
-                        <div class="bar">
-                            <span class="python"></span>
-                        </div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="info">
-                            <div class="tooltip-text">
-                                <p>C++ <span data-tip="OOP | Templates | Inheritance | Pointers | STLs"><i class="fa-solid fa-circle-info"></i></span></p>
-                            </div>
-                            <span class="percent">90%</span>
-                        </div>
-                        <div class="bar">
-                            <span class="Cpp"></span>
-                        </div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="info">
-                            <div class="tooltip-text">
-                                <p>Java <span data-tip="Spring | Hadoop MapReduce | Android Studio"><i class="fa-solid fa-circle-info"></i></span></p>
-                            </div>
-                            <span class="percent">75%</span>
-                        </div>
-                        <div class="bar">
-                            <span class="java"></span>
-                        </div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="info">
-                            <div class="tooltip-text">
-                                <p>SAP ABAP <span data-tip="ALV Reports | Smartforms | BAPIs"><i class="fa-solid fa-circle-info"></i></span></p>
-                            </div>
-                            <span class="percent">70%</span>
-                        </div>
-                        <div class="bar">
-                            <span class="abap"></span>
-                        </div>
+        <section id="skill-section" class="section-page" data-section="2">
+            <div class="container">
+                <div class="row">
+                    <div class="section-title">
+                        <h2>Top <span>Skills</span></h2>
+                        <div class="border"></div>
+                        <p class="section-subtitle">Here is the detailed analysis of my skillset.</p>
                     </div>
                 </div>
 
-                <div class="column">
-                    <div class="skill-domain">
-                        <h3>Web Development</h3>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="info">
-                            <p>HTML/CSS</p>
-                            <p class="percent">90%</p>
+                <!-- Technical Skills Container -->
+                <div class="technical-skills-container">
+                <div class="skill-main">
+                    <div class="column">
+                        <div class="skill-domain">
+                            <h3><i class="fas fa-code"></i> Programming</h3>
                         </div>
-                        <div class="bar">
-                            <span class="html-css"></span>
-                        </div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="info">
-                            <p>JavaScript</p>
-                            <p class="percent">85%</p>
-                        </div>
-                        <div class="bar">
-                            <span class="js"></span>
-                        </div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="info">
-                            <p>Node.js</p>
-                            <p class="percent">75%</p>
-                        </div>
-                        <div class="bar">
-                            <span class="node"></span>
-                        </div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="info">
-                            <p>React</p>
-                            <p class="percent">80%</p>
-                        </div>
-                        <div class="bar">
-                            <span class="react"></span>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                <div class="column">
-                    <div class="skill-domain">
-                        <h3>Data Science</h3>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="info">
-                            <div class="tooltip-text">
-                                <p>Machine Learning <span data-tip="Numpy | Pandas | Scikit-Learn | TensorFlow | Pytorch"><i class="fa-solid fa-circle-info"></i></span></p>
+                        <div class="skill-bar">
+                            <div class="info">
+                                <div class="tooltip-text">
+                                    <p>Python <span data-tip="OOP | Pandas | Numpy | Web Scraping(bs4, selenium) | Flask | Django"><i class="fa-solid fa-circle-info"></i></span></p>
+                                </div>
+                                <span class="percent">90%</span>
                             </div>
-                            <p class="percent">90%</p>
-                        </div>
-                        <div class="bar">
-                            <span class="ML"></span>
-                        </div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="info">
-                            <div class="tooltip-text">
-                                <p>NLP <span data-tip="Tokenization | NER | PoS | Spacy | NLTK"><i class="fa-solid fa-circle-info"></i></span></p>
+                            <div class="bar">
+                                <span class="python skill-progress" data-width="90%"></span>
                             </div>
-                            <p class="percent">80%</p>
                         </div>
-                        <div class="bar">
-                            <span class="NLP"></span>
-                        </div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="info">
-                            <div class="tooltip-text">
-                                <p>Data Visualization <span data-tip="Tableau | Power BI | Matplotlib | Seaborn"><i class="fa-solid fa-circle-info"></i></span></p>
+                        <div class="skill-bar">
+                            <div class="info">
+                                <div class="tooltip-text">
+                                    <p>C++ <span data-tip="OOP | Templates | Inheritance | Pointers | STLs"><i class="fa-solid fa-circle-info"></i></span></p>
+                                </div>
+                                <span class="percent">90%</span>
                             </div>
-                            <p class="percent">80%</p>
-                        </div>
-                        <div class="bar">
-                            <span class="data-visualization"></span>
-                        </div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="info">
-                            <div class="tooltip-text">
-                                <p>SQL <span data-tip="ER-Diag | UML | Normalization | Postgres | MongoDB"><i class="fa-solid fa-circle-info"></i></span></p>
+                            <div class="bar">
+                                <span class="Cpp skill-progress" data-width="90%"></span>
                             </div>
-                            <p class="percent">75%</p>
                         </div>
-                        <div class="bar">
-                            <span class="SQL"></span>
+                        <div class="skill-bar">
+                            <div class="info">
+                                <div class="tooltip-text">
+                                    <p>Java <span data-tip="Spring | Hadoop MapReduce | Android Studio"><i class="fa-solid fa-circle-info"></i></span></p>
+                                </div>
+                                <span class="percent">75%</span>
+                            </div>
+                            <div class="bar">
+                                <span class="java skill-progress" data-width="75%"></span>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="info">
+                                <div class="tooltip-text">
+                                    <p>SAP ABAP <span data-tip="ALV Reports | Smartforms | BAPIs"><i class="fa-solid fa-circle-info"></i></span></p>
+                                </div>
+                                <span class="percent">70%</span>
+                            </div>
+                            <div class="bar">
+                                <span class="abap skill-progress" data-width="70%"></span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-
-                <div class="column">
-                    <div class="skill-domain">
-                        <h3>Cloud & DevOps</h3>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="info">
-                            <div class="tooltip-text">
-                                <p>AWS <span data-tip="EC2 | S3 | IAM | Lambda | DynamoDB"><i class="fa-solid fa-circle-info"></i></span></p>
+                    <div class="column">
+                        <div class="skill-domain">
+                            <h3><i class="fas fa-globe"></i> Web Development</h3>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="info">
+                                <p>HTML/CSS</p>
+                                <p class="percent">90%</p>
                             </div>
-                            <p class="percent">80%</p>
+                            <div class="bar">
+                                <span class="html-css skill-progress" data-width="90%"></span>
+                            </div>
                         </div>
-                        <div class="bar">
-                            <span class="aws"></span>
+                        <div class="skill-bar">
+                            <div class="info">
+                                <p>JavaScript</p>
+                                <p class="percent">85%</p>
+                            </div>
+                            <div class="bar">
+                                <span class="js skill-progress" data-width="85%"></span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="info">
-                            <div class="tooltip-text">
-                                <p>Microsoft Azure <span data-tip="Azure VM | Blob Storage | Azure Functions"><i class="fa-solid fa-circle-info"></i></span></p>
-                            </div> 
-                            <p class="percent">75%</p>
+                        <div class="skill-bar">
+                            <div class="info">
+                                <p>Node.js</p>
+                                <p class="percent">75%</p>
+                            </div>
+                            <div class="bar">
+                                <span class="node skill-progress" data-width="75%"></span>
+                            </div>
                         </div>
-                        <div class="bar">
-                            <span class="m-az"></span>
-                        </div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="info">
-                            <p>Docker</p>
-                            <p class="percent">70%</p>
-                        </div>
-                        <div class="bar">
-                            <span class="docker"></span>
-                        </div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="info">
-                            <p>Git</p>
-                            <p class="percent">80%</p>
-                        </div>
-                        <div class="bar">
-                            <span class="git"></span>
+                        <div class="skill-bar">
+                            <div class="info">
+                                <p>React</p>
+                                <p class="percent">80%</p>
+                            </div>
+                            <div class="bar">
+                                <span class="react skill-progress" data-width="80%"></span>
+                            </div>
                         </div>
                     </div>
-                  </div>      
-            </div>
+                    
+                    <div class="column">
+                        <div class="skill-domain">
+                            <h3><i class="fas fa-brain"></i> Data Science</h3>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="info">
+                                <div class="tooltip-text">
+                                    <p>Machine Learning <span data-tip="Numpy | Pandas | Scikit-Learn | TensorFlow | Pytorch"><i class="fa-solid fa-circle-info"></i></span></p>
+                                </div>
+                                <p class="percent">90%</p>
+                            </div>
+                            <div class="bar">
+                                <span class="ML skill-progress" data-width="90%"></span>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="info">
+                                <div class="tooltip-text">
+                                    <p>NLP <span data-tip="Tokenization | NER | PoS | Spacy | NLTK"><i class="fa-solid fa-circle-info"></i></span></p>
+                                </div>
+                                <p class="percent">80%</p>
+                            </div>
+                            <div class="bar">
+                                <span class="NLP skill-progress" data-width="80%"></span>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="info">
+                                <div class="tooltip-text">
+                                    <p>Data Visualization <span data-tip="Tableau | Power BI | Matplotlib | Seaborn"><i class="fa-solid fa-circle-info"></i></span></p>
+                                </div>
+                                <p class="percent">80%</p>
+                            </div>
+                            <div class="bar">
+                                <span class="data-visualization skill-progress" data-width="80%"></span>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="info">
+                                <div class="tooltip-text">
+                                    <p>SQL <span data-tip="ER-Diag | UML | Normalization | Postgres | MongoDB"><i class="fa-solid fa-circle-info"></i></span></p>
+                                </div>
+                                <p class="percent">75%</p>
+                            </div>
+                            <div class="bar">
+                                <span class="SQL skill-progress" data-width="75%"></span>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="circular-bar">
-                
-                <div class="wrapper">
-                    <div class="card">
-                        <div class="circle">
-                            <div class="bar"></div>
-                            <div class="box"><span></span></div>
+                    <div class="column">
+                        <div class="skill-domain">
+                            <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
                         </div>
-                        <div class="text">Problem Solving</div>
-                    </div>
-                    <div class="card leadership">
-                        <div class="circle">
-                            <div class="bar"></div>
-                            <div class="box"><span></span></div>
+                        <div class="skill-bar">
+                            <div class="info">
+                                <div class="tooltip-text">
+                                    <p>AWS <span data-tip="EC2 | S3 | IAM | Lambda | DynamoDB"><i class="fa-solid fa-circle-info"></i></span></p>
+                                </div>
+                                <p class="percent">80%</p>
+                            </div>
+                            <div class="bar">
+                                <span class="aws skill-progress" data-width="80%"></span>
+                            </div>
                         </div>
-                        <div class="text">Leadership</div>
-                    </div>
-                    <div class="card client">
-                        <div class="circle">
-                            <div class="bar"></div>
-                            <div class="box"><span></span></div>
+                        <div class="skill-bar">
+                            <div class="info">
+                                <div class="tooltip-text">
+                                    <p>Microsoft Azure <span data-tip="Azure VM | Blob Storage | Azure Functions"><i class="fa-solid fa-circle-info"></i></span></p>
+                                </div> 
+                                <p class="percent">75%</p>
+                            </div>
+                            <div class="bar">
+                                <span class="m-az skill-progress" data-width="75%"></span>
+                            </div>
                         </div>
-                        <div class="text">Client facing roles</div>
-                    </div>
-                    <div class="card technical-writing">
-                        <div class="circle">
-                            <div class="bar"></div>
-                            <div class="box"><span></span></div>
+                        <div class="skill-bar">
+                            <div class="info">
+                                <p>Docker</p>
+                                <p class="percent">70%</p>
+                            </div>
+                            <div class="bar">
+                                <span class="docker skill-progress" data-width="70%"></span>
+                            </div>
                         </div>
-                        <div class="text">Technical writing</div>
-                    </div>
+                        <div class="skill-bar">
+                            <div class="info">
+                                <p>Git</p>
+                                <p class="percent">80%</p>
+                            </div>
+                            <div class="bar">
+                                <span class="git skill-progress" data-width="80%"></span>
+                            </div>
+                        </div>
+                    </div>      
                 </div>
             </div>
 
-            <div class="scroll-skills">
-                <a href="#testimonial" class="scroll-link scroll-below">
-                    <!-- <div class="scroll-below"></div> -->
-                </a>
+            <div class="section-auto-scroll">
+                <div class="scroll-hint">
+                    <div class="scroll-arrow bounce">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <span class="next-section">Next: Projects</span>
+                </div>
             </div>
         </section>
-
         <!-- Technical skills analysis ends -->
 
+        <!-- Projects start -->
+        <section class="projects-section section-page" id="projects" data-section="3">
+            <div class="container">
+                <div class="row">
+                    <div class="section-title">
+                        <h2>My <span>Projects</span></h2>
+                        <div class="border"></div>
+                        <p class="section-subtitle">Showcasing my technical expertise through real-world applications</p>
+                    </div>
+                </div>
+        
+                <!-- Project Filter -->
+                <div class="projects-filter">
+                    <button class="filter-btn active" data-filter="all">
+                        <i class="fas fa-th"></i> All Projects
+                    </button>
+                    <button class="filter-btn" data-filter="web">
+                        <i class="fas fa-globe"></i> Web Development
+                    </button>
+                    <button class="filter-btn" data-filter="ml">
+                        <i class="fas fa-brain"></i> Machine Learning
+                    </button>
+                    <button class="filter-btn" data-filter="data">
+                        <i class="fas fa-chart-bar"></i> Data Science
+                    </button>
+                </div>
+        
+                <!-- Projects Grid -->
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <div class="project-card" data-category="ml">
+                        <div class="project-image">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <h3 class="project-title">LLM Web Scraper Pipeline</h3>
+                                <span class="project-category">ML/AI</span>
+                            </div>
+                            <p class="project-description">
+                                Developed an automated volunteer data extraction system using GPT-3.5 and PaLM, improving crawler accuracy by 40% through advanced prompt engineering techniques.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">OpenAI</span>
+                                <span class="tech-tag">Langchain</span>
+                                <span class="tech-tag">AWS Lambda</span>
+                                <span class="tech-tag">Node.js</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link">
+                                    <i class="fab fa-github"></i> Code
+                                </a>
+                                <a href="#" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Project 2 -->
+                    <div class="project-card" data-category="web">
+                        <div class="project-image">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <h3 class="project-title">Interactive Portfolio</h3>
+                                <span class="project-category">Frontend</span>
+                            </div>
+                            <p class="project-description">
+                                A responsive, interactive portfolio website with modern animations, auto-scrolling features, and dynamic content sections.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">jQuery</span>
+                                <span class="tech-tag">Responsive</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link">
+                                    <i class="fab fa-github"></i> Code
+                                </a>
+                                <a href="#" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i> Live Site
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="section-auto-scroll">
+                    <div class="scroll-hint">
+                        <div class="scroll-arrow bounce">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <span class="next-section">Next: Certifications</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Projects end -->
+
+        <!-- Certifications start -->
+        <section class="certifications-section section-page" id="certifications" data-section="4">
+            <div class="container">
+                <div class="row">
+                    <div class="section-title">
+                        <h2>My <span>Certifications</span></h2>
+                        <div class="border"></div>
+                        <p class="section-subtitle">Professional certifications and continuous learning achievements</p>
+                    </div>
+                </div>
+        
+                <div class="certifications-grid">
+                    <!-- Certification 1 -->
+                    <div class="certification-card">
+                        <div class="cert-icon">
+                            <i class="fab fa-aws"></i>
+                        </div>
+                        <h3 class="cert-title">AWS Certified Solutions Architect</h3>
+                        <p class="cert-issuer">Amazon Web Services</p>
+                        <div class="cert-date">December 2023</div>
+                        <p class="cert-description">
+                            Demonstrated expertise in designing distributed systems and scalable applications on AWS cloud platform.
+                        </p>
+                        <div class="cert-skills">
+                            <span class="cert-skill">EC2</span>
+                            <span class="cert-skill">S3</span>
+                            <span class="cert-skill">Lambda</span>
+                            <span class="cert-skill">DynamoDB</span>
+                            <span class="cert-skill">IAM</span>
+                        </div>
+                        <a href="#" class="cert-verify">
+                            <i class="fas fa-certificate"></i> Verify Certificate
+                        </a>
+                    </div>
+        
+                    <!-- Certification 2 -->
+                    <div class="certification-card">
+                        <div class="cert-icon">
+                            <i class="fab fa-google"></i>
+                        </div>
+                        <h3 class="cert-title">Google Data Analytics Professional</h3>
+                        <p class="cert-issuer">Google Career Certificates</p>
+                        <div class="cert-date">August 2023</div>
+                        <p class="cert-description">
+                            Comprehensive certification covering data collection, cleaning, analysis, and visualization using industry-standard tools.
+                        </p>
+                        <div class="cert-skills">
+                            <span class="cert-skill">SQL</span>
+                            <span class="cert-skill">Tableau</span>
+                            <span class="cert-skill">R Programming</span>
+                            <span class="cert-skill">Data Visualization</span>
+                        </div>
+                        <a href="#" class="cert-verify">
+                            <i class="fas fa-certificate"></i> Verify Certificate
+                        </a>
+                    </div>
+                </div>
+        
+                <div class="section-auto-scroll">
+                    <div class="scroll-hint">
+                        <div class="scroll-arrow bounce">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <span class="next-section">Next: Testimonials</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Certifications ends -->
+
         <!-- Testimonial page starts here -->
-        <section class="testimonial-section" id="testimonial">
+        <section class="testimonial-section section-page" id="testimonial" data-section="5">
             <div class="testimonials">
                 <div class="inner">
                     <h1>Testimonials</h1>
                     <div class="border"></div>
+                    <p class="section-subtitle">What people say about my work</p>
 
-                    <div class="row">
-                        <!-- <div class="col">
-                            <div class="testimonial-card">
-                                <img class="rutgers-img" src="./Images/Rutgers1.png" alt="Rutgers University">
-                                <div class="name">Full Name 1</div>
-                                <div class="person-title"></div>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
+                    <!-- Testimonial Slider -->
+                    <div class="testimonial-slider">
+                        <div class="testimonial-track" id="testimonialTrack">
+                            <div class="testimonial-slide active">
+                                <div class="testimonial-card">
+                                    <div class="quote-icon">
+                                        <i class="fas fa-quote-left"></i>
+                                    </div>
+                                    <img class="testimonial-avatar" src="./Images/Rutgers1.png" alt="Rutgers University">
+                                    <div class="testimonial-content">
+                                        <div class="name">Anushka Joshi</div>
+                                        <div class="person-title">Honors Student at RBS</div>
+                                        <div class="stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <div class="testimonial-text">
+                                            <p>Aniket's work ethic as an educator stood out while teaching skills such as HTML, Javascript, and CSS. Aniket did an exceptional job breaking down complex concepts into understandable bits through the use of real world examples. As a supportive educator, Aniket created a positive learning environment where students felt comfortable asking questions and were not afraid to challenge themselves. Through his role as an educator, Aniket helped develop a great appreciation for Computer Science and the increasing value it has in the world today.</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="testimonial-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam quod itaque ipsa mollitia quisquam qui quidem provident ratione a, earum ipsam quo illum incidunt blanditiis dolore recusandae debitis maiores sapiente.</div>                                <span class="quote"><i class="fa fa-quote-left"></i></span>
+                            </div>
+
+                            <div class="testimonial-slide">
+                                <div class="testimonial-card">
+                                    <div class="quote-icon">
+                                        <i class="fas fa-quote-left"></i>
+                                    </div>
+                                    <img class="testimonial-avatar" src="./Images/Rutgers1.png" alt="Rutgers University">
+                                    <div class="testimonial-content">
+                                        <div class="name">Prof. Alan Belowich</div>
+                                        <div class="person-title">Associate Professor</div>
+                                        <div class="stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <div class="testimonial-text">
+                                            <p>Aniket Anvekar was working as a part-time lecturer for the course Principles of Computer Science during the Fall 2022 semester under my supervision. Aniket's exceptional teaching skills and dedication to student success stood out prominently. His ability to connect with students, create an inclusive learning environment, and provide unwavering support made him one of the best teaching assistants I have worked with during my 20-year tenure at the university. I hold unwavering confidence in Aniket's capacity to not just excel but truly thrive in any role he chooses to embrace.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="testimonial-slide">
+                                <div class="testimonial-card">
+                                    <div class="quote-icon">
+                                        <i class="fas fa-quote-left"></i>
+                                    </div>
+                                    <img class="testimonial-avatar" src="./Images/TCS-logo.jpg" alt="TCS Logo">
+                                    <div class="testimonial-content">
+                                        <div class="name">Sanjyot Desphande</div>
+                                        <div class="person-title">Associate Consultant</div>
+                                        <div class="stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                        </div>
+                                        <div class="testimonial-text">
+                                            <p>Aniket Anvekar is an exceptional professional to work with. His proficiency in Python, remarkable problem-solving abilities, and dedication to staying current with emerging technologies greatly elevate our team's performance. His collaborative nature and exceptional time management skills make him an invaluable asset to any project.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="testimonial-slide">
+                                <div class="testimonial-card">
+                                    <div class="quote-icon">
+                                        <i class="fas fa-quote-left"></i>
+                                    </div>
+                                    <img class="testimonial-avatar" src="./Images/Rizvi-logo.jpeg" alt="Rizvi College Logo">
+                                    <div class="testimonial-content">
+                                        <div class="name">Prof. Shaikh Mohd Ashfaque</div>
+                                        <div class="person-title">Associate Professor</div>
+                                        <div class="stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <div class="testimonial-text">
+                                            <p>Aniket's proactive attitude, technical proficiency, and unwavering dedication to learning make him an exceptional candidate. Throughout his undergraduate years, he consistently displayed a deep understanding of complex computer science concepts, excelling in subjects like Data Structures, Algorithms, and Database Systems.</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="col">
-                            <div class="testimonial-card">
-                                <img src="./Images/TCS-logo.jpg" alt="Rutgers University">
-                                <div class="name"></div>
-                                <div class="person-title"></div>
-                                <div class="stars">
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </div>
-                            <div class="testimonial-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam quod itaque ipsa mollitia quisquam qui quidem provident ratione a, earum ipsam quo illum incidunt blanditiis dolore recusandae debitis maiores sapiente.</div>                                <span class="quote"><i class="fa fa-quote-left"></i></span>
+                        <!-- Slider Controls -->
+                        <div class="testimonial-controls">
+                            <button class="prev-btn" id="prevTestimonial">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <div class="testimonial-dots" id="testimonialDots">
+                                <span class="dot active" data-slide="0"></span>
+                                <span class="dot" data-slide="1"></span>
+                                <span class="dot" data-slide="2"></span>
+                                <span class="dot" data-slide="3"></span>
                             </div>
-                        </div> -->
-
-                        <div class="col">
-                            <div class="testimonial-card">
-                                <img class="rutgers-img" src="./Images/Rutgers1.png"" alt="Rutgers University">
-                                <div class="name">Anushka Joshi</div>
-                                <div class="person-title">Honors Student at RBS</div>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <div class="testimonial-text">
-                                    <p>Aniket’s work ethic as an educator stood out while teaching skills such as HTML, Javascript, and CSS. Aniket did an exceptional job breaking down complex concepts into understandable bits through the use of real world examples. As a supportive educator, Aniket created a positive learning environment where students felt comfortable asking questions and were not afraid to challenge themselves. Through his role as an educator, Aniket helped develop a great appreciation for Computer Science and the increasing value it has in the world today.</p>
-                                </div>
-                                <!-- <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda corporis vel voluptatibus obcaecati vero vitae accusamus? Aspernatur ad quae, nesciunt rerum nulla vitae minima rem molestias in possimus, amet sint.</p> -->
-                                <span class="quote"><i class="fa fa-quote-left"></i></span>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="testimonial-card">
-                                <img class="rutgers-img" src="./Images/Rutgers1.png"" alt="Rutgers University">
-                                <div class="name">Prof. Alan Belowich</div>
-                                <div class="person-title">Associate Professor</div>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <div class="testimonial-text">
-                                    <p>Aniket Anvekar was working as a part-time lecturer for the course Principles of Computer Science during the Fall 2022 semester under my supervision. Aniket's exceptional teaching skills and dedication to student success stood out prominently. His ability to connect with students, create an inclusive learning environment, and provide unwavering support made him one of the best teaching assistants I have worked with during my 20-year tenure at the university. I hold unwavering confidence in Aniket's capacity to not just excel but truly thrive in any role he chooses to embrace.</p>
-                                </div>
-                                <span class="quote"><i class="fa fa-quote-left"></i></span>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="testimonial-card">
-                                <img src="./Images/TCS-logo.jpg" alt="Rutgers University">
-                                <div class="name">Sanjyot Desphande</div>
-                                <div class="person-title">Associate Consultant</div>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                </div>
-                                <div class="testimonial-text">
-                                    <p>Aniket Anvekar is an exceptional professional to work with. His proficiency in Python, remarkable problem-solving abilities, and dedication to staying current with emerging technologies greatly elevate our team's performance. His collaborative nature and exceptional time management skills make him an invaluable asset to any project.</p>
-                                </div>                                
-                                <span class="quote"><i class="fa fa-quote-left"></i></span>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="testimonial-card">
-                                <img src="./Images/Rizvi-logo.jpeg" alt="Rutgers University">
-                                <div class="name">Prof. Shaikh Mohd Ashfaque</div>
-                                <div class="person-title">Associate Professor</div>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <div class="testimonial-text">
-                                    <p>Aniket's proactive attitude, technical proficiency, and unwavering dedication to learning make him an exceptional candidate. Throughout his undergraduate years, he consistently displayed a deep understanding of complex computer science concepts, excelling in subjects like Data Structures, Algorithms, and Database Systems.</p>
-                                </div>                                
-                                <span class="quote"><i class="fa fa-quote-left"></i></span>
-                            </div>
+                            <button class="next-btn" id="nextTestimonial">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
                         </div>
                     </div>
 
-                    <div class="row scroll-testimonial">
-                        <a href="#contact" class="scroll-link scroll-below">
-                            <!-- <div class="scroll-below"></div> -->
-                        </a>
+                    <div class="section-auto-scroll">
+                        <div class="scroll-hint">
+                            <div class="scroll-arrow bounce">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <span class="next-section">Next: Contact</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -586,186 +893,209 @@
         <!-- Testimonial page ends here -->
 
         <!-- Contact section starts here -->
-        <section class="contact-section sec-padding" id="contact">
+        <section class="contact-section sec-padding section-page" id="contact" data-section="6">
             <div class="container">
                 <div class="row">
                     <div class="section-title">
                         <h2>Contact Me</h2>
                         <div class="border"></div>
+                        <p class="section-subtitle">Let's start a conversation</p>
                     </div>
                 </div>
                 <div class="row contact-details">
                     <div class="contact-form">
-                        <form name="contactForm" id="cform">
+                        <div class="form-header">
+                            <h3><i class="fas fa-paper-plane"></i> Send Message</h3>
+                            <p>I'll get back to you within 24 hours</p>
+                        </div>
+                        <form name="contactForm" id="cform" class="enhanced-form">
                             <div class="row">
                                 <div class="input-group">
-                                    <input type="text" placeholder="Name" id="name" class="input-control" required>
+                                    <div class="input-wrapper">
+                                        <i class="fas fa-user input-icon"></i>
+                                        <input type="text" placeholder="Your Name" id="name" class="input-control" required>
+                                        <span class="input-line"></span>
+                                    </div>
                                 </div>
                                 <div class="input-group">
-                                    <input type="text" placeholder="Email" id="email" class="input-control" required>
+                                    <div class="input-wrapper">
+                                        <i class="fas fa-envelope input-icon"></i>
+                                        <input type="email" placeholder="Your Email" id="email" class="input-control" required>
+                                        <span class="input-line"></span>
+                                    </div>
                                 </div>
                                 <div class="input-group otp-subgroup-send-btn">
-                                    <button onclick="sendOTP()" class="btn" id="otp-btn-send">Send OTP</button>
+                                    <button type="button" onclick="sendOTP()" class="btn btn-outline" id="otp-btn-send">
+                                        <i class="fas fa-shield-alt"></i> Send OTP
+                                    </button>
                                 </div>
                                 <div class="input-group otp-text">
-                                    Enter the OTP below to verify Email:
+                                    <i class="fas fa-info-circle"></i>
+                                    Enter the OTP below to verify your email:
                                 </div>
                                 <div class="input-group otp-subgroup">
-                                    <input type="text" id="otp-verify" class="input-control" required>
-                                    <button class="btn" id="otp-btn-verify">Verify</button>
+                                    <div class="input-wrapper">
+                                        <i class="fas fa-key input-icon"></i>
+                                        <input type="text" placeholder="Enter OTP" id="otp-verify" class="input-control" required>
+                                        <span class="input-line"></span>
+                                    </div>
+                                    <button type="button" class="btn btn-secondary" id="otp-btn-verify">
+                                        <i class="fas fa-check"></i> Verify
+                                    </button>
                                 </div>
                                 <div class="input-group">
-                                    <input type="text" placeholder="Subject" id="title" class="input-control" required disabled>
+                                    <div class="input-wrapper">
+                                        <i class="fas fa-tag input-icon"></i>
+                                        <input type="text" placeholder="Subject" id="title" class="input-control" required disabled>
+                                        <span class="input-line"></span>
+                                    </div>
                                 </div>
                                 <div class="input-group">
-                                    <textarea placeholder="Message" id="message" class="input-control" required></textarea>
+                                    <div class="input-wrapper textarea-wrapper">
+                                        <i class="fas fa-comment input-icon"></i>
+                                        <textarea placeholder="Your Message" id="message" class="input-control" required rows="5"></textarea>
+                                        <span class="input-line"></span>
+                                    </div>
                                 </div>
                                 <div class="submit-btn">
-                                    <!-- <input type="submit" name="Send Message" id="contact-btn" disabled="disabled"> -->
-                                    <button type="button" class="btn contact-btn" id="contact-btn" disabled>Send Message</button>
+                                    <button type="button" class="btn btn-primary contact-btn" id="contact-btn" disabled>
+                                        <i class="fas fa-paper-plane"></i>
+                                        <span>Send Message</span>
+                                        <div class="btn-loader"></div>
+                                    </button>
                                 </div>
                             </div>
                         </form>
                     </div>
                     <div class="contact-info">
-                        <div class="contact-info-item">
-                            <h3>Email</h3>
-                            <p>aniketanvekar25@gmail.com</p>
+                        <div class="contact-header">
+                            <h3><i class="fas fa-address-card"></i> Get In Touch</h3>
+                            <p>Feel free to reach out through any of these channels</p>
                         </div>
+                        
                         <div class="contact-info-item">
-                            <h3>Contact</h3>
-                            <p>+1 (201)-920-4974</p>
-                        </div>
-                        <div class="contact-info-item">
-                            <h3>Follow Me</h3>
-                            <div class="social-links">
-                                <a class="fb-color" href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                                <a class="linkedin-color" href="https://www.linkedin.com/in/aniketanvekar/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                                <a class="github-color" href="https://github.com/aniketAnvekar" target="_blank"><i class="fab fa-github"></i></a>
-                                <a class="insta-color" href="https://instagram.com/anvekar__aniket25?igshid=OGQ5ZDc2ODk2ZA==" target="_blank"><i class="fab fa-instagram"></i></a>
-                                
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details-text">
+                                <h3>Email</h3>
+                                <p>aniketanvekar25@gmail.com</p>
+                                <a href="mailto:aniketanvekar25@gmail.com" class="contact-link">Send Email</a>
                             </div>
                         </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details-text">
+                                <h3>Contact</h3>
+                                <p>+1 (201)-920-4974</p>
+                                <a href="tel:+12019204974" class="contact-link">Call Now</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details-text">
+                                <h3>Location</h3>
+                                <p>New Jersey, USA</p>
+                                <a href="#" class="contact-link">View Map</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item social-section">
+                            <h3><i class="fas fa-share-alt"></i> Follow Me</h3>
+                            <div class="social-links">
+                                <a class="social-link fb-color" href="#" target="_blank" data-tooltip="Facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a class="social-link linkedin-color" href="https://www.linkedin.com/in/aniketanvekar/" target="_blank" data-tooltip="LinkedIn">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a class="social-link github-color" href="https://github.com/aniketAnvekar" target="_blank" data-tooltip="GitHub">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a class="social-link insta-color" href="https://instagram.com/anvekar__aniket25?igshid=OGQ5ZDc2ODk2ZA==" target="_blank" data-tooltip="Instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Quick Stats -->
+                        <div class="quick-stats">
+                            <div class="stat-box">
+                                <div class="stat-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-number">24h</span>
+                                    <span class="stat-label">Response Time</span>
+                                </div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-number">100%</span>
+                                    <span class="stat-label">Satisfaction</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Thank You Message -->
+                <div class="thank-you-message" id="thankYouMessage">
+                    <div class="thank-you-content">
+                        <i class="fas fa-check-circle success-icon"></i>
+                        <h3>Message Sent Successfully!</h3>
+                        <p>Thank you for reaching out. I'll get back to you within 24 hours.</p>
+                        <button class="btn btn-primary" onclick="closeThankYou()">Close</button>
+                    </div>
+                </div>
+
+                <!-- Back to Top -->
+                <div class="back-to-top" id="backToTop">
+                    <div class="scroll-hint">
+                        <div class="scroll-arrow bounce rotate-up">
+                            <i class="fas fa-chevron-up"></i>
+                        </div>
+                        <span class="next-section">Back to Top</span>
                     </div>
                 </div>
             </div>
         </section>
         <!-- Contact section ends here -->
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-text">
+                        <p>&copy; 2024 Aniket Anvekar. All rights reserved.</p>
+                        <p>Made with <i class="fas fa-heart"></i> and lots of <i class="fas fa-coffee"></i></p>
+                    </div>
+                    <div class="footer-social">
+                        <a href="https://www.linkedin.com/in/aniketanvekar/" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/aniketAnvekar" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://instagram.com/anvekar__aniket25" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
 
-    <script>
-        function initCircularAnimation() {
-        let options = {
-            startAngle: -1.55,
-            size: 130,
-            value: 0.9,
-            fill: { gradient: ["#1c9657", "#222e74"] }
-        };
-        $(".circle .bar").circleProgress(options).on('circle-animation-progress',
-        function(event, progress, stepValue){
-            $(this).parent().find("span").text(String(stepValue.toFixed(2).substr(2) + "%"));
-        });
-        $(".leadership .bar").circleProgress({
-            value: 0.75
-        });
-        $(".client .bar").circleProgress({
-            value: 0.75
-        });
-        $(".technical-writing .bar").circleProgress({
-            value: 0.85
-        });
-    }
-
-    // Use Intersection Observer to detect when the section is visible
-    const circularBarSection = document.querySelector('.circular-bar');
-    const options = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.5 // Adjust the threshold as needed
-    };
-
-    const observer = new IntersectionObserver(function(entries, observer) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Call the function when the section is visible
-                initCircularAnimation();
-                // Unobserve the target to avoid unnecessary calls
-                observer.unobserve(entry.target);
-            }
-        });
-    }, options);
-
-    // Start observing the circular-bar section
-    observer.observe(circularBarSection);
-
-
-
-    // Typed words
-    var typed = new Typed(".input-desc", {
-        strings:["CS Graduate", "Software Developer", "Travel Enthusiast"],
-        startdelay:100,
-        typeSpeed:50,
-        backSpeed:30,
-        backdelay:500,
-        loop:true
-    })
-
-    // Contact form
-    function validateForm() {
-        var name = document.getElementById("name").value;
-        var email = document.getElementById("email").value;
-        var title = document.getElementById("title").value;
-        var message = document.getElementById("message").value;
-
-        if (name === "" || email === "" || title === "" || message === "") {
-            alert("Please fill out all fields before submitting.");
-            return false;
-        }
-
-        // Additional validation logic can be added here if needed
-
-        return true; // Form submission will proceed
-    }
-
-    // Enable the "Send Message" button when all required fields are filled
-    document.addEventListener("input", function () {
-        var name = document.getElementById("name").value;
-        var email = document.getElementById("email").value;
-        var title = document.getElementById("title").value;
-        var message = document.getElementById("message").value;
-        var submitButton = document.getElementById("contact-btn");
-
-        if (name !== "" && email !== "" && title !== "" && message !== "") {
-            submitButton.removeAttribute("disabled");
-        } else {
-            submitButton.setAttribute("disabled", "disabled");
-        }
-    });
-
-    // Contact form
-    var contact_btn = document.getElementById('contact-btn');
-    contact_btn.addEventListener('click', function(e){
-        e.preventDefault()
-        var contact_name = document.getElementById('name').value;
-        var contact_email = document.getElementById('email').value;
-        var contact_subject = document.getElementById('title').value;
-        var contact_message = document.getElementById('message').value;
-        var contact_body = 'Name: '+contact_name+'<br/>Email: '+contact_email+'<br/>Subject: '+contact_subject+'<br/>Message: '+contact_message;
-
-        Email.send({
-            SecureToken : "506a1537-917c-48d3-af05-80a6c441f38d",
-            To : 'aniketanvekara@gmail.com',
-            From : "aniket.va25@gmail.com",
-            Subject : "New Message || Directed via Portfolio",
-            Body : contact_body
-        }).then(
-        message => alert('Sent! You will receive a response in 2-3 business days.')
-        );
-        document.getElementById('cform').reset();
-    })
-
-    </script>
+    <!-- Enhanced JavaScript Integration -->
     <script src="script.js"></script>
 </body>
 </html>
-
