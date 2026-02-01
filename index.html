@@ -3,1190 +3,508 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aniket Anvekar - Interactive Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-circle-progress/1.2.2/circle-progress.min.js"></script>
-    <script src="https://kit.fontawesome.com/aedf671c46.js" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
+    <title>Aniket Anvekar - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        
+        .gradient-bg { background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #252d4a 100%); }
+        .gradient-text { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        .floating-nav { position: fixed; right: 2rem; top: 50%; transform: translateY(-50%); z-index: 50; }
+        
+        @media (max-width: 1280px) { 
+            .floating-nav { 
+                top: auto; bottom: 2rem; left: 50%; right: auto; 
+                transform: translateX(-50%); flex-direction: row;
+                display: none;
+            }
+            .floating-nav.active { display: flex; }
+        }
+        
+        .skill-bar { height: 8px; background: rgba(99, 102, 241, 0.2); border-radius: 4px; overflow: hidden; margin-top: 8px; }
+        .skill-progress { height: 100%; width: 0; background: linear-gradient(90deg, #6366f1, #8b5cf6); transition: width 1.5s cubic-bezier(0.17, 0.67, 0.83, 0.67); }
+        
+        .project-card:hover { transform: translateY(-8px); border-color: #6366f1; }
+        .project-card { transition: all 0.4s ease; border: 1px solid transparent; }
+        
+        section { min-height: 100vh; display: flex; align-items: center; padding: 5rem 1rem; }
+        
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+        
+        .mobile-nav-overlay { display: none; position: fixed; inset: 0; background: rgba(10, 14, 39, 0.95); z-index: 40; flex-direction: column; justify-content: center; align-items: center; gap: 2rem; }
+        .mobile-nav-overlay.active { display: flex; }
+    </style>
 </head>
-<body>
-    <!-- Progress Bar -->
-    <div class="progress-bar" id="progressBar"></div>
+<body class="gradient-bg text-white">
 
-    <!-- Page loader starts -->
-    <div class="page-loader" id="pageLoader">
-        <div class="loader-content">
-            <div class="loader-spinner"></div>
-            <h3>Loading Portfolio...</h3>
-            <p>Preparing an amazing experience</p>
-            <div class="loading-progress">
-                <div class="loading-bar"></div>
-            </div>
-        </div>
-    </div>
-    <!-- Page loader ends -->
-
-    <!-- Animated Background -->
-    <div class="bg-design">
-        <div class="floating-shapes">
-            <span class="shape"></span>
-            <span class="shape"></span>
-            <span class="shape"></span>
-            <span class="shape"></span>
-            <span class="shape"></span>
-            <span class="shape"></span>
-            <span class="shape"></span>
-            <span class="shape"></span>
-            <span class="shape"></span>
-            <span class="shape"></span>
-            <span class="shape"></span>
-        </div>
+    <div id="mobileOverlay" class="mobile-nav-overlay">
+        <a href="#home" class="text-2xl font-bold hover:text-indigo-400">Home</a>
+        <a href="#about" class="text-2xl font-bold hover:text-indigo-400">About</a>
+        <a href="#experience" class="text-2xl font-bold hover:text-indigo-400">Experience</a>
+        <a href="#certifications" class="text-2xl font-bold hover:text-indigo-400">Certifications</a>
+        <a href="#skills" class="text-2xl font-bold hover:text-indigo-400">Skills</a>
+        <a href="#projects" class="text-2xl font-bold hover:text-indigo-400">Projects</a>
+        <a href="#contact" class="text-2xl font-bold hover:text-indigo-400">Contact</a>
     </div>
 
-    <!-- Floating Navigation -->
-    <nav class="floating-nav" id="floatingNav">
-        <ul>
-            <li><a href="#home" class="nav-dot active" data-section="0">
-                <span class="nav-tooltip">Home</span>
-                <i class="fas fa-home nav-icon"></i>
-            </a></li>
-            <li><a href="#about" class="nav-dot" data-section="1">
-                <span class="nav-tooltip">About</span>
-                <i class="fas fa-user nav-icon"></i>
-            </a></li>
-            <li><a href="#skill-section" class="nav-dot" data-section="2">
-                <span class="nav-tooltip">Skills</span>
-                <i class="fas fa-code nav-icon"></i>
-            </a></li>
-            <li><a href="#testimonial" class="nav-dot" data-section="3">
-                <span class="nav-tooltip">Testimonials</span>
-                <i class="fas fa-quote-left nav-icon"></i>
-            </a></li>
-            <li><a href="#contact" class="nav-dot" data-section="4">
-                <span class="nav-tooltip">Contact</span>
-                <i class="fas fa-envelope nav-icon"></i>
-            </a></li>
-        </ul>
+    <nav class="floating-nav bg-slate-800/80 backdrop-blur-lg rounded-full p-4 border border-indigo-500/20">
+        <div class="flex flex-col gap-4">
+            <a href="#home" title="Home" class="w-12 h-12 rounded-full flex items-center justify-center bg-gradient-to-r from-indigo-600 to-purple-600 hover:scale-110 transition-transform">
+                <i class="fas fa-home"></i>
+            </a>
+            <a href="#about" title="About" class="w-12 h-12 rounded-full flex items-center justify-center hover:bg-indigo-600/20 transition-all">
+                <i class="fas fa-user"></i>
+            </a>
+            <a href="#experience" title="Experience" class="w-12 h-12 rounded-full flex items-center justify-center hover:bg-indigo-600/20 transition-all">
+                <i class="fas fa-briefcase"></i>
+            </a>
+            <a href="#certifications" title="Certifications" class="w-12 h-12 rounded-full flex items-center justify-center hover:bg-indigo-600/20 transition-all">
+                <i class="fas fa-certificate"></i>
+            </a>
+            <a href="#skills" title="Skills" class="w-12 h-12 rounded-full flex items-center justify-center hover:bg-indigo-600/20 transition-all">
+                <i class="fas fa-code"></i>
+            </a>
+            <a href="#projects" title="Projects" class="w-12 h-12 rounded-full flex items-center justify-center hover:bg-indigo-600/20 transition-all">
+                <i class="fas fa-laptop"></i>
+            </a>
+            <a href="#contact" title="Contact" class="w-12 h-12 rounded-full flex items-center justify-center hover:bg-indigo-600/20 transition-all">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
     </nav>
 
-    <!-- Auto-scroll Control
-    <div class="auto-scroll-control" id="autoScrollToggle">
-        <i class="fas fa-pause" id="scrollIcon"></i>
-        <span class="scroll-text">Auto</span>
-    </div> -->
+    <button id="mobileMenuBtn" aria-label="Toggle Menu" class="xl:hidden fixed top-6 right-6 z-50 w-12 h-12 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
+        <i class="fas fa-bars" id="menuIcon"></i>
+    </button>
 
-    <!-- Scroll Progress Indicator -->
-    <!-- <div class="scroll-indicator" id="scrollIndicator">
-        <div class="scroll-mouse">
-            <div class="scroll-wheel"></div>
-        </div>
-        <div class="scroll-text">Scroll or wait for auto-navigation</div>
-        <div class="auto-timer">
-            <div class="timer-circle">
-                <div class="timer-fill"></div>
-                <span class="timer-text">8s</span>
-            </div>
-        </div>
-    </div> -->
-
-    <div class="overlay">
-        <!-- activate the overlay to avoid multiple clicks -->
-    </div>
-
-    <div class="main" id="main">
-
-        <!-- Header starts -->
-        <!-- <header class="header">
-            <div class="container">
-                <div class="row">
-                    <button type="button" class="nav-toggle">
-                        <span></span>
-                    </button>
-                    <nav class="nav-items">
-                        <div class="nav-inner">
-                            <ul>
-                                <li><a href="#home" class="nav-item link-item">Home</a></li>
-                                <li><a href="#about" class="nav-item link-item">About</a></li>
-                                <li><a href="#skill-section" class="nav-item link-item">Skills</a></li>
-                                <li><a href="#testimonial" class="nav-item link-item">Testimonial</a></li>
-                                <li><a href="#contact" class="nav-item link-item">Contact</a></li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </header> -->
-        <!-- Header ends -->
-
-        <!-- Home section start -->
-        <section class="home-section align-items-center section-page" id="home" data-section="0">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="home-txt">
-                        <p class="greeting animate-text">Hello, It's Me</p>
-                        <h1 class="name animate-text">Aniket Vinesh Anvekar</h1>
-                        <h2 class="role animate-text">I'm a <span class="input-desc"></span></h2>
-                        <div class="social-preview animate-text">
-                            <div class="social-links-home">
-                                <a href="https://www.linkedin.com/in/aniketanvekar/" target="_blank" class="social-link">
-                                    <i class="fab fa-linkedin"></i>
-                                </a>
-                                <a href="https://github.com/aniketAnvekar" target="_blank" class="social-link">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="https://instagram.com/anvekar__aniket25" target="_blank" class="social-link">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="home-buttons animate-text">
-                            <a href="#about" class="btn btn-primary link-item">About Me</a>
-                            <a href="#contact" class="btn btn-secondary link-item">Contact Me</a>
-                            <a href="Documents/Resume_Aniket_Anvekar.pdf" target="_blank" class="btn btn-outline">
-                                <i class="fas fa-download"></i> Resume
-                            </a>
-                        </div>
-                    </div>
-                    <div class="home-pic">
-                        <div class="img-box parallax-element">
-                            <div class="image-frame">
-                                <img src="Images/Aniket-IMG2.png" alt="Aniket Image" class="profile-image">
-                                <div class="image-overlay">
-                                    <div class="floating-elements">
-                                        <div class="float-icon"><i class="fas fa-code"></i></div>
-                                        <div class="float-icon"><i class="fas fa-laptop-code"></i></div>
-                                        <div class="float-icon"><i class="fas fa-database"></i></div>
-                                        <div class="float-icon"><i class="fab fa-python"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Auto-scroll indicator for this section -->
-                <!-- <div class="section-auto-scroll">
-                    <div class="scroll-hint">
-                        <div class="scroll-arrow bounce">
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <span class="next-section">Next: About</span>
-                    </div>
-                </div> -->
-            </div>
-        </section>
-        <!-- Home section ends -->
-
-        <!-- About section starts -->
-        <section class="about-section sec-padding section-page" id="about" data-section="1">
-            <div class="container">
-                <div class="row">
-                    <div class="section-title">
-                        <h2 class="section-heading">About Me</h2>
-                        <div class="border"></div>
-                        <p class="section-subtitle">Discover my journey and passion</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="about-img">
-                        <div class="img-box parallax-element">
-                            <img src="Images/Aniket-IMG2.png" alt="Aniket Image">
-                            <div class="achievement-badges">
-                                <div class="badge">
-                                    <i class="fas fa-graduation-cap"></i>
-                                    <span>MS Computer Science</span>
-                                </div>
-                                <div class="badge">
-                                    <i class="fas fa-briefcase"></i>
-                                    <span>3+ Years Experience</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="about-txt">
-                        <div class="aboutme-container">
-                            <input type="checkbox" id="check">
-                            <p class="intro-text">I am a Data Scientist and GenAI Engineer with expertise in developing full-stack AI solutions combining deep learning, natural language processing, and cloud-native architectures.</p>
-                            <div class="more-content">
-                                <p>I specialize in designing context-aware AI agents, scalable ETL pipelines, and predictive models. Proficient in integrating AI models with production systems via RESTful APIs and orchestration frameworks such as LangChain. My passion is leveraging AI to automate workflows, deliver measurable business impact, and enable data-driven decision-making in financial and enterprise domains.</p>
-                                <p>With a strong background in both academia and industry, I have successfully delivered impactful solutions at leading organizations including Vanguard, Kansas Department of Labor, and Eli Lilly & Company. I hold an MS in Computer Science from Rutgers University and continuously stay updated with the latest advancements in AI and cloud technologies.</p>
-                            </div>
-                            <label for="check" class="read-more-btn">Read More</label>
-                        </div>
-
-                        <!-- Interactive Stats -->
-                        <div class="stats-container">
-                            <div class="stat-item">
-                                <div class="stat-number" data-count="6">0</div>
-                                <div class="stat-label">Years Experience</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number" data-count="20">0</div>
-                                <div class="stat-label">Projects Completed</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number" data-count="25">0</div>
-                                <div class="stat-label">Technologies</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number" data-count="4">0</div>
-                                <div class="stat-label">Certifications</div>
-                            </div>
-                        </div>
-
-                        <h3>Top Skills</h3>
-                        <div class="skills">
-                            <div class="skill-item">Generative AI & LLMs</div>
-                            <div class="skill-item">Machine Learning & Deep Learning</div>
-                            <div class="skill-item">Natural Language Processing</div>
-                            <div class="skill-item">RAG & Prompt Engineering</div>
-                            <div class="skill-item">Cloud Computing (AWS)</div>
-                            <div class="skill-item">Data Engineering & ETL</div>
-                        </div>
-
-                        <div class="about-tabs">
-                            <button type="button" class="tab-item active" data-target="#education">
-                                <i class="fas fa-graduation-cap"></i>Education
-                            </button>
-                            <button type="button" class="tab-item" data-target="#experience">
-                                <i class="fas fa-briefcase"></i>Work Experience
-                            </button>
-                        </div>
-
-                        <!-- Education starts -->
-                        <div class="tab-content active" id="education">
-                            <div class="timeline">
-                                <div class="timeline-item">
-                                    <div class="timeline-marker"></div>
-                                    <div class="timeline-content">
-                                        <span class="date">Aug 2022 - May 2024</span>
-                                        <h4>Master of Science in Computer Science 
-                                            <span class="institution">Rutgers University, New Brunswick</span>
-                                        </h4>
-                                        <p><strong>Coursework</strong> - Software Engineering, Mathematical Foundation of Data Science, Massive Data Mining, Computer Vision, Machine Learning</p>
-                                        <p class="gpa">GPA - 3.65/4.0</p>
-                                    </div>
-                                </div>
-                                <div class="timeline-item">
-                                    <div class="timeline-marker"></div>
-                                    <div class="timeline-content">
-                                        <span class="date">Aug 2015 - May 2019</span>
-                                        <h4>Bachelor of Engineering in Computer Science
-                                            <span class="institution">University of Mumbai</span>
-                                        </h4>
-                                        <p><strong>Coursework</strong> - Data Structures & Analysis of Algorithm, Operating System, Computer Networks, Object Oriented Programming</p>
-                                        <p class="gpa">CGPA - 8.11/10</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Education ends -->
-
-                        <!-- Experience starts -->
-                        <div class="tab-content" id="experience">
-                            <div class="timeline">
-                                <div class="timeline-item">
-                                    <div class="timeline-marker"></div>
-                                    <div class="timeline-content">
-                                        <span class="date">Jul 2025 – Present</span>
-                                        <h4>GenAI Engineer 
-                                            <span class="institution">Vanguard, Malvern, PA</span>
-                                        </h4>
-                                        <ul class="achievements">
-                                            <li>Designed RESTful APIs with AWS Lambda, API Gateway, and CloudFront to securely invoke Amazon Bedrock's foundational models.</li>
-                                            <li>Developed a context-aware financial agent using LangChain, FAISS, and Anthropic models that dynamically processed GraphQL queries to generate real-time fund insights.</li>
-                                            <li><strong>Technology used</strong> - AWS Lambda, API Gateway, Amazon Bedrock, LangChain, FAISS, Anthropic, GraphQL</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="timeline-item">
-                                    <div class="timeline-marker"></div>
-                                    <div class="timeline-content">
-                                        <span class="date">Jul 2024 – Jun 2025</span>
-                                        <h4>AWS Conversational AI Engineer 
-                                            <span class="institution">Kansas Department of Labor, Edison, NJ</span>
-                                        </h4>
-                                        <ul class="achievements">
-                                            <li>Leveraged AWS services like Lambda, Connect, Lex, S3, and Kinesis to develop an IVR system for filing unemployment insurance claims for the state of Kansas.</li>
-                                            <li>Implemented Amazon Bedrock Guardrails to enforce safe, policy-compliant chatbot interactions, ensuring ethical, accurate, and context-aware AI responses.</li>
-                                            <li>Boosted chatbot accuracy by 20% by integrating AWS Bedrock and Llama3 model to validate system and user responses, improving overall user experience.</li>
-                                            <li>Optimized front-end integration with PostgreSQL by developing RESTful Python APIs using Flask.</li>
-                                            <li><strong>Technology used</strong> - AWS Lambda, Connect, Lex, S3, Kinesis, Amazon Bedrock, Llama3, Flask, PostgreSQL</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="timeline-item">
-                                    <div class="timeline-marker"></div>
-                                    <div class="timeline-content">
-                                        <span class="date">Jul 2023 – Dec 2023</span>
-                                        <h4>Backend Lead - Data Scientist 
-                                            <span class="institution">Samaritan Scout, Summit, NJ</span>
-                                        </h4>
-                                        <ul class="achievements">
-                                            <li>Developed Python web scraping platform with Beautiful Soup to aggregate 1,000+ NGO volunteering opportunities, reducing manual search time by 80% across tri-state area.</li>
-                                            <li>Improved data extraction efficiency by 20% using GPT-3.5 and Google Gemini prompt engineering, outperforming regex-based keyword identification.</li>
-                                            <li>Architected normalized database schema on Amazon RDS and built automated ETL pipeline using AWS Lambda and S3 triggers, increasing data processing efficiency by 25%.</li>
-                                            <li><strong>Technology used</strong> - Python, Beautiful Soup, GPT-3.5, Google Gemini, AWS Lambda, Amazon RDS, S3</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="timeline-item">
-                                    <div class="timeline-marker"></div>
-                                    <div class="timeline-content">
-                                        <span class="date">May 2021 – Aug 2022</span>
-                                        <h4>Data Scientist 
-                                            <span class="institution">Eli Lilly & Company, Remote</span>
-                                        </h4>
-                                        <ul class="achievements">
-                                            <li>Conducted a PoC to automate healthcare claims image processing using Tesseract and Azure OCR, reducing manual data entry by 30% and enhancing data validation accuracy.</li>
-                                            <li>Utilized Transformers and NLTK library to extract and summarize data from medical manuals (PDFs), achieving a high ROUGE score of 0.83.</li>
-                                            <li>Improved medical image prediction accuracy with an AUC score of 0.91 using transfer learning with ResNet-50.</li>
-                                            <li><strong>Technology used</strong> - Tesseract, Azure OCR, Transformers, NLTK, ResNet-50, Transfer Learning</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="timeline-item">
-                                    <div class="timeline-marker"></div>
-                                    <div class="timeline-content">
-                                        <span class="date">Aug 2019 – May 2021</span>
-                                        <h4>Data Engineer 
-                                            <span class="institution">Reserve Bank of India, Mumbai, India</span>
-                                        </h4>
-                                        <ul class="achievements">
-                                            <li>Led team of 3 to develop Selenium web crawler on RHEL servers, processing 20+ e-commerce sites to calculate price indices for 8 Indian metropolitan markets using Agile methodology.</li>
-                                            <li>Built social media analytics pipeline using Twitter API and PySpark NLP for GDP sentiment analysis, visualizing insights through Plotly dashboards for executive decision-making.</li>
-                                            <li>Optimized database schema and ETL workflows with business analysts for Apache Hive, reducing weekly data loading time by 6 hours (30% improvement).</li>
-                                            <li>Containerized applications using Docker and Kubernetes, achieving 20% faster processing times and improved scalability in production environment.</li>
-                                            <li><strong>Technology used</strong> - Selenium, Python, PySpark, Twitter API, Apache Hive, Docker, Kubernetes, Plotly</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Experience ends -->
-
-                        <div class="action-buttons">
-                            <a href="Documents/Resume_Aniket_Anvekar.pdf" target="_blank" class="btn btn-primary">
-                                <i class="fas fa-download"></i> Download CV
-                            </a>
-                            <a href="#contact" class="btn btn-secondary link-item">
-                                <i class="fas fa-envelope"></i> Contact me
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="section-auto-scroll">
-                    <div class="scroll-hint">
-                        <div class="scroll-arrow bounce">
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <span class="next-section">Next: Skills</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- About section ends -->
-
-        
-        <!-- Technical skills analysis starts -->
-        <section id="skill-section" class="section-page" data-section="2">
-            <div class="container">
-                <div class="row">
-                    <div class="section-title">
-                        <h2>Top <span>Skills</span></h2>
-                        <div class="border"></div>
-                        <p class="section-subtitle">Here is the detailed analysis of my skillset.</p>
-                    </div>
-                </div>
-
-                <!-- Technical Skills Container -->
-                <div class="technical-skills-container">
-                <div class="skill-main">
-                    <div class="column">
-                        <div class="skill-domain">
-                            <h3><i class="fas fa-code"></i> Programming</h3>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="info">
-                                <div class="tooltip-text">
-                                    <p>Python <span data-tip="OOP | Pandas | Numpy | Web Scraping(bs4, selenium) | Flask | Django"><i class="fa-solid fa-circle-info"></i></span></p>
-                                </div>
-                                <span class="percent">90%</span>
-                            </div>
-                            <div class="bar">
-                                <span class="python skill-progress" data-width="90%"></span>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="info">
-                                <div class="tooltip-text">
-                                    <p>C++ <span data-tip="OOP | Templates | Inheritance | Pointers | STLs"><i class="fa-solid fa-circle-info"></i></span></p>
-                                </div>
-                                <span class="percent">90%</span>
-                            </div>
-                            <div class="bar">
-                                <span class="Cpp skill-progress" data-width="90%"></span>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="info">
-                                <div class="tooltip-text">
-                                    <p>Java <span data-tip="Spring | Hadoop MapReduce | Android Studio"><i class="fa-solid fa-circle-info"></i></span></p>
-                                </div>
-                                <span class="percent">75%</span>
-                            </div>
-                            <div class="bar">
-                                <span class="java skill-progress" data-width="75%"></span>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="info">
-                                <div class="tooltip-text">
-                                    <p>SAP ABAP <span data-tip="ALV Reports | Smartforms | BAPIs"><i class="fa-solid fa-circle-info"></i></span></p>
-                                </div>
-                                <span class="percent">70%</span>
-                            </div>
-                            <div class="bar">
-                                <span class="abap skill-progress" data-width="70%"></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="column">
-                        <div class="skill-domain">
-                            <h3><i class="fas fa-globe"></i> Web Development</h3>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="info">
-                                <p>HTML/CSS</p>
-                                <p class="percent">90%</p>
-                            </div>
-                            <div class="bar">
-                                <span class="html-css skill-progress" data-width="90%"></span>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="info">
-                                <p>JavaScript</p>
-                                <p class="percent">85%</p>
-                            </div>
-                            <div class="bar">
-                                <span class="js skill-progress" data-width="85%"></span>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="info">
-                                <p>Node.js</p>
-                                <p class="percent">75%</p>
-                            </div>
-                            <div class="bar">
-                                <span class="node skill-progress" data-width="75%"></span>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="info">
-                                <p>React</p>
-                                <p class="percent">80%</p>
-                            </div>
-                            <div class="bar">
-                                <span class="react skill-progress" data-width="80%"></span>
-                            </div>
-                        </div>
-                    </div>
+    <section id="home">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <p class="text-indigo-400 font-medium tracking-widest uppercase text-sm">Data Scientist & GenAI Engineer</p>
+                    <h1 class="text-5xl md:text-7xl font-bold leading-tight">Aniket Vinesh <br><span class="gradient-text">Anvekar</span></h1>
+                    <p class="text-gray-400 text-lg max-w-md">5+ years of experience building scalable backend systems, data-driven applications, and AI-powered solutions across ML and Generative AI.</p>
                     
-                    <div class="column">
-                        <div class="skill-domain">
-                            <h3><i class="fas fa-brain"></i> Data Science</h3>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="info">
-                                <div class="tooltip-text">
-                                    <p>Machine Learning <span data-tip="Numpy | Pandas | Scikit-Learn | TensorFlow | Pytorch"><i class="fa-solid fa-circle-info"></i></span></p>
-                                </div>
-                                <p class="percent">90%</p>
-                            </div>
-                            <div class="bar">
-                                <span class="ML skill-progress" data-width="90%"></span>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="info">
-                                <div class="tooltip-text">
-                                    <p>NLP <span data-tip="Tokenization | NER | PoS | Spacy | NLTK"><i class="fa-solid fa-circle-info"></i></span></p>
-                                </div>
-                                <p class="percent">80%</p>
-                            </div>
-                            <div class="bar">
-                                <span class="NLP skill-progress" data-width="80%"></span>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="info">
-                                <div class="tooltip-text">
-                                    <p>Data Visualization <span data-tip="Tableau | Power BI | Matplotlib | Seaborn"><i class="fa-solid fa-circle-info"></i></span></p>
-                                </div>
-                                <p class="percent">80%</p>
-                            </div>
-                            <div class="bar">
-                                <span class="data-visualization skill-progress" data-width="80%"></span>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="info">
-                                <div class="tooltip-text">
-                                    <p>SQL <span data-tip="ER-Diag | UML | Normalization | Postgres | MongoDB"><i class="fa-solid fa-circle-info"></i></span></p>
-                                </div>
-                                <p class="percent">75%</p>
-                            </div>
-                            <div class="bar">
-                                <span class="SQL skill-progress" data-width="75%"></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="column">
-                        <div class="skill-domain">
-                            <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="info">
-                                <div class="tooltip-text">
-                                    <p>AWS <span data-tip="EC2 | S3 | IAM | Lambda | DynamoDB"><i class="fa-solid fa-circle-info"></i></span></p>
-                                </div>
-                                <p class="percent">80%</p>
-                            </div>
-                            <div class="bar">
-                                <span class="aws skill-progress" data-width="80%"></span>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="info">
-                                <div class="tooltip-text">
-                                    <p>Microsoft Azure <span data-tip="Azure VM | Blob Storage | Azure Functions"><i class="fa-solid fa-circle-info"></i></span></p>
-                                </div> 
-                                <p class="percent">75%</p>
-                            </div>
-                            <div class="bar">
-                                <span class="m-az skill-progress" data-width="75%"></span>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="info">
-                                <p>Docker</p>
-                                <p class="percent">70%</p>
-                            </div>
-                            <div class="bar">
-                                <span class="docker skill-progress" data-width="70%"></span>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="info">
-                                <p>Git</p>
-                                <p class="percent">80%</p>
-                            </div>
-                            <div class="bar">
-                                <span class="git skill-progress" data-width="80%"></span>
-                            </div>
-                        </div>
-                    </div>      
-                </div>
-            </div>
-
-            <div class="section-auto-scroll">
-                <div class="scroll-hint">
-                    <div class="scroll-arrow bounce">
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <span class="next-section">Next: Projects</span>
-                </div>
-            </div>
-        </section>
-        <!-- Technical skills analysis ends -->
-
-        <!-- Projects start -->
-        <section class="projects-section section-page" id="projects" data-section="3">
-            <div class="container">
-                <div class="row">
-                    <div class="section-title">
-                        <h2>My <span>Projects</span></h2>
-                        <div class="border"></div>
-                        <p class="section-subtitle">Showcasing my technical expertise through real-world applications</p>
-                    </div>
-                </div>
-        
-                <!-- Project Filter -->
-                <div class="projects-filter">
-                    <button class="filter-btn active" data-filter="all">
-                        <i class="fas fa-th"></i> All Projects
-                    </button>
-                    <button class="filter-btn" data-filter="web">
-                        <i class="fas fa-globe"></i> Web Development
-                    </button>
-                    <button class="filter-btn" data-filter="ml">
-                        <i class="fas fa-brain"></i> Machine Learning
-                    </button>
-                    <button class="filter-btn" data-filter="data">
-                        <i class="fas fa-chart-bar"></i> Data Science
-                    </button>
-                </div>
-        
-                <!-- Projects Grid -->
-                <div class="projects-grid">
-                    <!-- Project 1 -->
-                    <div class="project-card" data-category="ml">
-                        <div class="project-image">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-header">
-                                <h3 class="project-title">Legal Document Q&A System</h3>
-                                <span class="project-category">RAG/AI</span>
-                            </div>
-                            <p class="project-description">
-                                Built a multi-agent RAG system for document analysis, implementing vector search with FAISS and achieving 85% answer accuracy on 5K+ legal queries.
-                            </p>
-                            <div class="project-tech">
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">LangChain</span>
-                                <span class="tech-tag">RAG</span>
-                                <span class="tech-tag">LangGraph</span>
-                                <span class="tech-tag">FAISS</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="project-link">
-                                    <i class="fab fa-github"></i> Code
-                                </a>
-                                <a href="#" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i> Demo
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-        
-                    <!-- Project 2 -->
-                    <div class="project-card" data-category="ml">
-                        <div class="project-image">
-                            <i class="fas fa-heartbeat"></i>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-header">
-                                <h3 class="project-title">Kidney Disease Classification</h3>
-                                <span class="project-category">Deep Learning</span>
-                            </div>
-                            <p class="project-description">
-                                Developed VGG16 models on 5K+ CT scans achieving 81% accuracy with MLFlow tracking. Implemented comprehensive model monitoring and experiment tracking.
-                            </p>
-                            <div class="project-tech">
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">TensorFlow</span>
-                                <span class="tech-tag">VGG16</span>
-                                <span class="tech-tag">MLFlow</span>
-                                <span class="tech-tag">Computer Vision</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="project-link">
-                                    <i class="fab fa-github"></i> Code
-                                </a>
-                                <a href="#" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i> Results
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 3 -->
-                    <div class="project-card" data-category="data">
-                        <div class="project-image">
-                            <i class="fas fa-chart-bar"></i>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-header">
-                                <h3 class="project-title">Airbnb Data Analytics</h3>
-                                <span class="project-category">Data Science</span>
-                            </div>
-                            <p class="project-description">
-                                Built Tableau dashboards for rental KPI analysis and developed Random Forest regressor (R2 = 0.23) with LIME explainability, outperforming Lasso and Ridge models.
-                            </p>
-                            <div class="project-tech">
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">Tableau</span>
-                                <span class="tech-tag">Random Forest</span>
-                                <span class="tech-tag">LIME</span>
-                                <span class="tech-tag">Machine Learning</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="project-link">
-                                    <i class="fab fa-github"></i> Code
-                                </a>
-                                <a href="#" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i> Dashboard
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        
-                <div class="section-auto-scroll">
-                    <div class="scroll-hint">
-                        <div class="scroll-arrow bounce">
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <span class="next-section">Next: Certifications</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Projects end -->
-
-        <!-- Certifications start -->
-        <section class="certifications-section section-page" id="certifications" data-section="4">
-            <div class="container">
-                <div class="row">
-                    <div class="section-title">
-                        <h2>My <span>Certifications</span></h2>
-                        <div class="border"></div>
-                        <p class="section-subtitle">Professional certifications and continuous learning achievements</p>
-                    </div>
-                </div>
-        
-                <div class="certifications-grid">
-                    <!-- Certification 1 -->
-                    <div class="certification-card">
-                        <div class="cert-icon">
-                            <i class="fab fa-aws"></i>
-                        </div>
-                        <h3 class="cert-title">AWS Machine Learning Engineer Associate</h3>
-                        <p class="cert-issuer">Amazon Web Services</p>
-                        <p class="cert-description">
-                            Advanced certification demonstrating expertise in designing and building ML solutions on AWS cloud platform.
-                        </p>
-                        <div class="cert-skills">
-                            <span class="cert-skill">SageMaker</span>
-                            <span class="cert-skill">Lambda</span>
-                            <span class="cert-skill">Bedrock</span>
-                            <span class="cert-skill">ML Pipeline</span>
-                        </div>
-                        <a href="#" class="cert-verify">
-                            <i class="fas fa-certificate"></i> Verify Certificate
+                    <div class="flex gap-4">
+                        <a href="https://www.linkedin.com/in/aniketanvekar/" aria-label="LinkedIn" target="_blank" class="w-11 h-11 border border-indigo-500/30 rounded-full flex items-center justify-center hover:bg-indigo-600 hover:border-indigo-600 transition-all">
+                            <i class="fab fa-linkedin-in"></i>
                         </a>
-                    </div>
-        
-                    <!-- Certification 2 -->
-                    <div class="certification-card">
-                        <div class="cert-icon">
-                            <i class="fab fa-aws"></i>
-                        </div>
-                        <h3 class="cert-title">AWS Cloud Practitioner</h3>
-                        <p class="cert-issuer">Amazon Web Services</p>
-                        <p class="cert-description">
-                            Foundational certification covering AWS cloud services, architecture, and best practices.
-                        </p>
-                        <div class="cert-skills">
-                            <span class="cert-skill">EC2</span>
-                            <span class="cert-skill">S3</span>
-                            <span class="cert-skill">Networking</span>
-                            <span class="cert-skill">Security</span>
-                        </div>
-                        <a href="#" class="cert-verify">
-                            <i class="fas fa-certificate"></i> Verify Certificate
-                        </a>
-                    </div>
-
-                    <!-- Certification 3 -->
-                    <div class="certification-card">
-                        <div class="cert-icon">
-                            <i class="fab fa-aws"></i>
-                        </div>
-                        <h3 class="cert-title">AWS AI Practitioner</h3>
-                        <p class="cert-issuer">Amazon Web Services</p>
-                        <p class="cert-description">
-                            Specialization in AI and machine learning services including Amazon Bedrock, SageMaker, and AI model deployment.
-                        </p>
-                        <div class="cert-skills">
-                            <span class="cert-skill">Amazon Bedrock</span>
-                            <span class="cert-skill">Generative AI</span>
-                            <span class="cert-skill">LLM Integration</span>
-                        </div>
-                        <a href="#" class="cert-verify">
-                            <i class="fas fa-certificate"></i> Verify Certificate
-                        </a>
-                    </div>
-
-                    <!-- Certification 4 -->
-                    <div class="certification-card">
-                        <div class="cert-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <h3 class="cert-title">Databricks Generative AI</h3>
-                        <p class="cert-issuer">Databricks</p>
-                        <p class="cert-description">
-                            Comprehensive certification in Generative AI fundamentals, RAG systems, and prompt engineering on Databricks platform.
-                        </p>
-                        <div class="cert-skills">
-                            <span class="cert-skill">GenAI Fundamentals</span>
-                            <span class="cert-skill">RAG</span>
-                            <span class="cert-skill">Prompt Engineering</span>
-                            <span class="cert-skill">LLM Fine-tuning</span>
-                        </div>
-                        <a href="#" class="cert-verify">
-                            <i class="fas fa-certificate"></i> Verify Certificate
-                        </a>
-                    </div>
-                </div>
-        
-                <div class="section-auto-scroll">
-                    <div class="scroll-hint">
-                        <div class="scroll-arrow bounce">
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <span class="next-section">Next: Testimonials</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Certifications ends -->
-
-        <!-- Testimonial page starts here -->
-        <section class="testimonial-section section-page" id="testimonial" data-section="5">
-            <div class="testimonials">
-                <div class="inner">
-                    <h1>Testimonials</h1>
-                    <div class="border"></div>
-                    <p class="section-subtitle">What people say about my work</p>
-
-                    <!-- Testimonial Slider -->
-                    <div class="testimonial-slider">
-                        <div class="testimonial-track" id="testimonialTrack">
-                            <div class="testimonial-slide active">
-                                <div class="testimonial-card">
-                                    <div class="quote-icon">
-                                        <i class="fas fa-quote-left"></i>
-                                    </div>
-                                    <img class="testimonial-avatar" src="./Images/Rutgers1.png" alt="Rutgers University">
-                                    <div class="testimonial-content">
-                                        <div class="name">Anushka Joshi</div>
-                                        <div class="person-title">Honors Student at RBS</div>
-                                        <div class="stars">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                        <div class="testimonial-text">
-                                            <p>Aniket's work ethic as an educator stood out while teaching skills such as HTML, Javascript, and CSS. Aniket did an exceptional job breaking down complex concepts into understandable bits through the use of real world examples. As a supportive educator, Aniket created a positive learning environment where students felt comfortable asking questions and were not afraid to challenge themselves. Through his role as an educator, Aniket helped develop a great appreciation for Computer Science and the increasing value it has in the world today.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="testimonial-slide">
-                                <div class="testimonial-card">
-                                    <div class="quote-icon">
-                                        <i class="fas fa-quote-left"></i>
-                                    </div>
-                                    <img class="testimonial-avatar" src="./Images/Rutgers1.png" alt="Rutgers University">
-                                    <div class="testimonial-content">
-                                        <div class="name">Prof. Alan Belowich</div>
-                                        <div class="person-title">Associate Professor</div>
-                                        <div class="stars">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                        <div class="testimonial-text">
-                                            <p>Aniket Anvekar was working as a part-time lecturer for the course Principles of Computer Science during the Fall 2022 semester under my supervision. Aniket's exceptional teaching skills and dedication to student success stood out prominently. His ability to connect with students, create an inclusive learning environment, and provide unwavering support made him one of the best teaching assistants I have worked with during my 20-year tenure at the university. I hold unwavering confidence in Aniket's capacity to not just excel but truly thrive in any role he chooses to embrace.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="testimonial-slide">
-                                <div class="testimonial-card">
-                                    <div class="quote-icon">
-                                        <i class="fas fa-quote-left"></i>
-                                    </div>
-                                    <img class="testimonial-avatar" src="./Images/TCS-logo.jpg" alt="TCS Logo">
-                                    <div class="testimonial-content">
-                                        <div class="name">Sanjyot Desphande</div>
-                                        <div class="person-title">Associate Consultant</div>
-                                        <div class="stars">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                        </div>
-                                        <div class="testimonial-text">
-                                            <p>Aniket Anvekar is an exceptional professional to work with. His proficiency in Python, remarkable problem-solving abilities, and dedication to staying current with emerging technologies greatly elevate our team's performance. His collaborative nature and exceptional time management skills make him an invaluable asset to any project.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="testimonial-slide">
-                                <div class="testimonial-card">
-                                    <div class="quote-icon">
-                                        <i class="fas fa-quote-left"></i>
-                                    </div>
-                                    <img class="testimonial-avatar" src="./Images/Rizvi-logo.jpeg" alt="Rizvi College Logo">
-                                    <div class="testimonial-content">
-                                        <div class="name">Prof. Shaikh Mohd Ashfaque</div>
-                                        <div class="person-title">Associate Professor</div>
-                                        <div class="stars">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                        <div class="testimonial-text">
-                                            <p>Aniket's proactive attitude, technical proficiency, and unwavering dedication to learning make him an exceptional candidate. Throughout his undergraduate years, he consistently displayed a deep understanding of complex computer science concepts, excelling in subjects like Data Structures, Algorithms, and Database Systems.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Slider Controls -->
-                        <div class="testimonial-controls">
-                            <button class="prev-btn" id="prevTestimonial">
-                                <i class="fas fa-chevron-left"></i>
-                            </button>
-                            <div class="testimonial-dots" id="testimonialDots">
-                                <span class="dot active" data-slide="0"></span>
-                                <span class="dot" data-slide="1"></span>
-                                <span class="dot" data-slide="2"></span>
-                                <span class="dot" data-slide="3"></span>
-                            </div>
-                            <button class="next-btn" id="nextTestimonial">
-                                <i class="fas fa-chevron-right"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="section-auto-scroll">
-                        <div class="scroll-hint">
-                            <div class="scroll-arrow bounce">
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                            <span class="next-section">Next: Contact</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Testimonial page ends here -->
-
-        <!-- Contact section starts here -->
-        <section class="contact-section sec-padding section-page" id="contact" data-section="6">
-            <div class="container">
-                <div class="row">
-                    <div class="section-title">
-                        <h2>Contact Me</h2>
-                        <div class="border"></div>
-                        <p class="section-subtitle">Let's start a conversation</p>
-                    </div>
-                </div>
-                <div class="row contact-details">
-                    <div class="contact-form">
-                        <div class="form-header">
-                            <h3><i class="fas fa-paper-plane"></i> Send Message</h3>
-                            <p>I'll get back to you within 24 hours</p>
-                        </div>
-                        <form name="contactForm" id="cform" class="enhanced-form">
-                            <div class="row">
-                                <div class="input-group">
-                                    <div class="input-wrapper">
-                                        <i class="fas fa-user input-icon"></i>
-                                        <input type="text" placeholder="Your Name" id="name" class="input-control" required>
-                                        <span class="input-line"></span>
-                                    </div>
-                                </div>
-                                <div class="input-group">
-                                    <div class="input-wrapper">
-                                        <i class="fas fa-envelope input-icon"></i>
-                                        <input type="email" placeholder="Your Email" id="email" class="input-control" required>
-                                        <span class="input-line"></span>
-                                    </div>
-                                </div>
-                                <div class="input-group otp-subgroup-send-btn">
-                                    <button type="button" onclick="sendOTP()" class="btn btn-outline" id="otp-btn-send">
-                                        <i class="fas fa-shield-alt"></i> Send OTP
-                                    </button>
-                                </div>
-                                <div class="input-group otp-text">
-                                    <i class="fas fa-info-circle"></i>
-                                    Enter the OTP below to verify your email:
-                                </div>
-                                <div class="input-group otp-subgroup">
-                                    <div class="input-wrapper">
-                                        <i class="fas fa-key input-icon"></i>
-                                        <input type="text" placeholder="Enter OTP" id="otp-verify" class="input-control" required>
-                                        <span class="input-line"></span>
-                                    </div>
-                                    <button type="button" class="btn btn-secondary" id="otp-btn-verify">
-                                        <i class="fas fa-check"></i> Verify
-                                    </button>
-                                </div>
-                                <div class="input-group">
-                                    <div class="input-wrapper">
-                                        <i class="fas fa-tag input-icon"></i>
-                                        <input type="text" placeholder="Subject" id="title" class="input-control" required disabled>
-                                        <span class="input-line"></span>
-                                    </div>
-                                </div>
-                                <div class="input-group">
-                                    <div class="input-wrapper textarea-wrapper">
-                                        <i class="fas fa-comment input-icon"></i>
-                                        <textarea placeholder="Your Message" id="message" class="input-control" required rows="5"></textarea>
-                                        <span class="input-line"></span>
-                                    </div>
-                                </div>
-                                <div class="submit-btn">
-                                    <button type="button" class="btn btn-primary contact-btn" id="contact-btn" disabled>
-                                        <i class="fas fa-paper-plane"></i>
-                                        <span>Send Message</span>
-                                        <div class="btn-loader"></div>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="contact-info">
-                        <div class="contact-header">
-                            <h3><i class="fas fa-address-card"></i> Get In Touch</h3>
-                            <p>Feel free to reach out through any of these channels</p>
-                        </div>
-                        
-                        <div class="contact-info-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-details-text">
-                                <h3>Email</h3>
-                                <p>aniketanvekar25@gmail.com</p>
-                                <a href="mailto:aniketanvekar25@gmail.com" class="contact-link">Send Email</a>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-info-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="contact-details-text">
-                                <h3>Contact</h3>
-                                <p>+1 (201)-920-4974</p>
-                                <a href="tel:+12019204974" class="contact-link">Call Now</a>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-info-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-details-text">
-                                <h3>Location</h3>
-                                <p>New Jersey, USA</p>
-                                <a href="#" class="contact-link">View Map</a>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-info-item social-section">
-                            <h3><i class="fas fa-share-alt"></i> Follow Me</h3>
-                            <div class="social-links">
-                                <a class="social-link fb-color" href="#" target="_blank" data-tooltip="Facebook">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a class="social-link linkedin-color" href="https://www.linkedin.com/in/aniketanvekar/" target="_blank" data-tooltip="LinkedIn">
-                                    <i class="fab fa-linkedin"></i>
-                                </a>
-                                <a class="social-link github-color" href="https://github.com/aniketAnvekar" target="_blank" data-tooltip="GitHub">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a class="social-link insta-color" href="https://instagram.com/anvekar__aniket25?igshid=OGQ5ZDc2ODk2ZA==" target="_blank" data-tooltip="Instagram">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Quick Stats -->
-                        <div class="quick-stats">
-                            <div class="stat-box">
-                                <div class="stat-icon">
-                                    <i class="fas fa-clock"></i>
-                                </div>
-                                <div class="stat-info">
-                                    <span class="stat-number">24h</span>
-                                    <span class="stat-label">Response Time</span>
-                                </div>
-                            </div>
-                            <div class="stat-box">
-                                <div class="stat-icon">
-                                    <i class="fas fa-check-circle"></i>
-                                </div>
-                                <div class="stat-info">
-                                    <span class="stat-number">100%</span>
-                                    <span class="stat-label">Satisfaction</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Thank You Message -->
-                <div class="thank-you-message" id="thankYouMessage">
-                    <div class="thank-you-content">
-                        <i class="fas fa-check-circle success-icon"></i>
-                        <h3>Message Sent Successfully!</h3>
-                        <p>Thank you for reaching out. I'll get back to you within 24 hours.</p>
-                        <button class="btn btn-primary" onclick="closeThankYou()">Close</button>
-                    </div>
-                </div>
-
-                <!-- Back to Top -->
-                <div class="back-to-top" id="backToTop">
-                    <div class="scroll-hint">
-                        <div class="scroll-arrow bounce rotate-up">
-                            <i class="fas fa-chevron-up"></i>
-                        </div>
-                        <span class="next-section">Back to Top</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Contact section ends here -->
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="container">
-                <div class="footer-content">
-                    <div class="footer-text">
-                        <p>&copy; 2024 Aniket Anvekar. All rights reserved.</p>
-                        <p>Made with <i class="fas fa-heart"></i> and lots of <i class="fas fa-coffee"></i></p>
-                    </div>
-                    <div class="footer-social">
-                        <a href="https://www.linkedin.com/in/aniketanvekar/" target="_blank">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://github.com/aniketAnvekar" target="_blank">
+                        <a href="https://github.com/aniketAnvekar" aria-label="GitHub" target="_blank" class="w-11 h-11 border border-indigo-500/30 rounded-full flex items-center justify-center hover:bg-indigo-600 hover:border-indigo-600 transition-all">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="https://instagram.com/anvekar__aniket25" target="_blank">
+                        <a href="https://instagram.com/anvekar__aniket25" aria-label="Instagram" target="_blank" class="w-11 h-11 border border-indigo-500/30 rounded-full flex items-center justify-center hover:bg-indigo-600 hover:border-indigo-600 transition-all">
                             <i class="fab fa-instagram"></i>
                         </a>
                     </div>
+                    
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <a href="#about" class="bg-gradient-to-r from-indigo-600 to-purple-600 px-8 py-3 rounded-full font-medium hover:shadow-[0_0_20px_rgba(99,102,241,0.4)] transition-all inline-flex items-center gap-2">
+                            About Me <i class="fas fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="animate-float hidden md:block">
+                    <div class="relative w-80 h-[550px] mx-auto">
+                        <div class="absolute inset-0 bg-indigo-600 rounded-3xl rotate-6 opacity-20"></div>
+                        <div class="relative w-full h-full bg-gradient-to-br from-indigo-600 to-purple-600 rounded-3xl shadow-2xl overflow-hidden border-2 border-indigo-500/30">
+                            <img src="Images/Aniket-IMG2.png" alt="Aniket Anvekar" class="w-full h-full object-cover object-top opacity-80 hover:opacity-100 transition-opacity scale-125 origin-top">
+                        </div>
+                    </div>
                 </div>
             </div>
-        </footer>
-    </div>
+        </div>
+    </section>
 
-    <!-- Enhanced JavaScript Integration -->
-    <script src="script.js"></script>
+    <section id="about" class="bg-slate-800/30">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">About Me</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto"></div>
+            </div>
+
+            <div class="space-y-6">
+                    <p class="text-gray-300 text-lg leading-relaxed">
+                        I am a <strong>Generative AI Engineer and Backend Engineer</strong> with 5+ years of experience building production-grade, scalable systems at the intersection of data, machine learning, and AI. I specialize in <strong>multi-agent architectures, retrieval-augmented generation (RAG), and cloud-native deployments</strong>, taking ideas from prototype to enterprise scale. Across financial services, healthcare, and public-sector platforms, I deliver systems that prioritize <strong>accuracy, reliability, and responsible AI</strong>. My strength lies in designing <strong>end-to-end AI systems</strong>—from data pipelines and model evaluation to low-latency APIs and CI/CD-driven validation.
+                    </p>
+                    
+                    <p class="text-gray-300 text-lg leading-relaxed">
+                        I naturally gravitate toward <strong>leadership and ownership</strong>, enjoy mentoring junior engineers and undergraduate students, and care deeply about <strong>engineering rigor, explainability, and real-world impact</strong>—not just demos. Outside of work, you'll find me at the gym, experimenting in the kitchen, or planning my next trip. I'm a firm believer that strong engineers grow both inside and outside the codebase.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-slate-700/50 p-6 rounded-2xl border border-slate-600/30">
+                            <div class="text-3xl font-bold text-indigo-400">5+</div>
+                            <div class="text-sm text-gray-400 font-medium uppercase tracking-wider">Years Exp</div>
+                        </div>
+                        <div class="bg-slate-700/50 p-6 rounded-2xl border border-slate-600/30">
+                            <div class="text-3xl font-bold text-indigo-400">6+</div>
+                            <div class="text-sm text-gray-400 font-medium uppercase tracking-wider">Certifications</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-700/50 p-6 rounded-2xl border-l-4 border-indigo-600">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="text-lg font-semibold text-white">MS in Computer Science</h4>
+                                <p class="text-indigo-400">Rutgers University</p>
+                            </div>
+                            <span class="text-xs bg-indigo-600/20 text-indigo-300 px-2 py-1 rounded">2022 - 2024</span>
+                        </div>
+                        <p class="text-gray-400 mt-2 text-sm italic">Specialization: Machine Learning, NLP, and Artificial Intelligence</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Experience</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto"></div>
+            </div>
+
+            <div class="max-w-4xl mx-auto space-y-8">
+                <div class="relative pl-8 border-l-2 border-indigo-600/30">
+                    <div class="absolute w-4 h-4 bg-indigo-600 rounded-full -left-[9px] top-0 shadow-[0_0_10px_#6366f1]"></div>
+                    <div class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 hover:border-indigo-500/50 transition-all">
+                        <span class="text-indigo-400 font-semibold text-sm">Jul 2025 – Present</span>
+                        <h3 class="text-2xl font-bold mt-1">Generative AI Engineer</h3>
+                        <p class="text-gray-400 mb-4 font-medium">Vanguard • Malvern, PA</p>
+                        <div class="space-y-4 text-gray-300">
+                            <div>
+                                <p class="text-indigo-300 font-semibold mb-2">Project:</p>
+                                <p>Architected an enterprise-grade Generative AI platform using multi-agent orchestration and optimized RAG pipelines, with scalable conversational memory, cloud-native deployment, and CI/CD-based evaluation for production reliability.</p>
+                            </div>
+                            <div>
+                                <p class="text-indigo-300 font-semibold mb-2">Outcome:</p>
+                                <ul class="space-y-2 ml-4">
+                                    <li class="flex gap-3 items-start"><i class="fas fa-check-circle text-indigo-500 mt-1 text-sm"></i> Improved complex query resolution accuracy by 25%</li>
+                                    <li class="flex gap-3 items-start"><i class="fas fa-check-circle text-indigo-500 mt-1 text-sm"></i> Reduced LLM context redundancy by 15%</li>
+                                    <li class="flex gap-3 items-start"><i class="fas fa-check-circle text-indigo-500 mt-1 text-sm"></i> Achieved sub-100ms API latency under high concurrency</li>
+                                    <li class="flex gap-3 items-start"><i class="fas fa-check-circle text-indigo-500 mt-1 text-sm"></i> Lowered inference costs across enterprise workloads</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative pl-8 border-l-2 border-indigo-600/30">
+                    <div class="absolute w-4 h-4 bg-indigo-600 rounded-full -left-[9px] top-0 shadow-[0_0_10px_#6366f1]"></div>
+                    <div class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 hover:border-indigo-500/50 transition-all">
+                        <span class="text-indigo-400 font-semibold text-sm">Jul 2024 – Jun 2025</span>
+                        <h3 class="text-2xl font-bold mt-1">AWS Conversational AI Engineer</h3>
+                        <p class="text-gray-400 mb-4 font-medium">Kansas Department of Labor • Edison, NJ</p>
+                        <div class="space-y-4 text-gray-300">
+                            <div>
+                                <p class="text-indigo-300 font-semibold mb-2">Project:</p>
+                                <p>Designed and deployed a scalable, cloud-native conversational AI platform on AWS to modernize legacy public-sector workflows, including real-time validation, analytics, and operational dashboards at production scale.</p>
+                            </div>
+                            <div>
+                                <p class="text-indigo-300 font-semibold mb-2">Outcome:</p>
+                                <ul class="space-y-2 ml-4">
+                                    <li class="flex gap-3 items-start"><i class="fas fa-check-circle text-indigo-500 mt-1 text-sm"></i> Supported 10K+ daily users at peak</li>
+                                    <li class="flex gap-3 items-start"><i class="fas fa-check-circle text-indigo-500 mt-1 text-sm"></i> Reduced claim processing time by 60%</li>
+                                    <li class="flex gap-3 items-start"><i class="fas fa-check-circle text-indigo-500 mt-1 text-sm"></i> Cut operational issue triage from 6 hours to 30 minutes through real-time streaming analytics</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative pl-8 border-l-2 border-indigo-600/30">
+                    <div class="absolute w-4 h-4 bg-indigo-600 rounded-full -left-[9px] top-0 shadow-[0_0_10px_#6366f1]"></div>
+                    <div class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 hover:border-indigo-500/50 transition-all">
+                        <span class="text-indigo-400 font-semibold text-sm">May 2021 – Aug 2022</span>
+                        <h3 class="text-2xl font-bold mt-1">Machine Learning Engineer</h3>
+                        <p class="text-gray-400 mb-4 font-medium">Eli Lilly & Company • Remote</p>
+                        <div class="space-y-4 text-gray-300">
+                            <div>
+                                <p class="text-indigo-300 font-semibold mb-2">Project:</p>
+                                <p>Developed an end-to-end clinical AI platform combining deep learning–based medical imaging, explainable MLOps pipelines, and compliant NLP workflows to support healthcare decision-making at scale.</p>
+                            </div>
+                            <div>
+                                <p class="text-indigo-300 font-semibold mb-2">Outcome:</p>
+                                <ul class="space-y-2 ml-4">
+                                    <li class="flex gap-3 items-start"><i class="fas fa-check-circle text-indigo-500 mt-1 text-sm"></i> Achieved 0.91 ROC-AUC in breast cancer risk identification</li>
+                                    <li class="flex gap-3 items-start"><i class="fas fa-check-circle text-indigo-500 mt-1 text-sm"></i> Automated 50K+ medical document summaries</li>
+                                    <li class="flex gap-3 items-start"><i class="fas fa-check-circle text-indigo-500 mt-1 text-sm"></i> Delivered explainable, bias-monitored models aligned with clinical and regulatory standards</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative pl-8 border-l-2 border-indigo-600/30">
+                    <div class="absolute w-4 h-4 bg-indigo-600 rounded-full -left-[9px] top-0 shadow-[0_0_10px_#6366f1]"></div>
+                    <div class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 hover:border-indigo-500/50 transition-all">
+                        <span class="text-indigo-400 font-semibold text-sm">Aug 2019 – May 2021</span>
+                        <h3 class="text-2xl font-bold mt-1">Data Scientist</h3>
+                        <p class="text-gray-400 mb-4 font-medium">Reserve Bank of India • Mumbai, India</p>
+                        <div class="space-y-4 text-gray-300">
+                            <div>
+                                <p class="text-indigo-300 font-semibold mb-2">Project:</p>
+                                <p>Led the development of a distributed data engineering and machine learning platform, combining large-scale web data extraction, containerized orchestration, and distributed model training to support analytical decision-making.</p>
+                            </div>
+                            <div>
+                                <p class="text-indigo-300 font-semibold mb-2">Outcome:</p>
+                                <ul class="space-y-2 ml-4">
+                                    <li class="flex gap-3 items-start"><i class="fas fa-check-circle text-indigo-500 mt-1 text-sm"></i> Achieved a 99.5% crawl success rate</li>
+                                    <li class="flex gap-3 items-start"><i class="fas fa-check-circle text-indigo-500 mt-1 text-sm"></i> Reduced pipeline downtime by 30%</li>
+                                    <li class="flex gap-3 items-start"><i class="fas fa-check-circle text-indigo-500 mt-1 text-sm"></i> Improved house price prediction performance by 25% RMSE over baseline models</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications" class="bg-slate-800/30">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Certifications</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 hover:border-indigo-500/50 transition-all text-center">
+                    <img src="Images/aws-icon.jpeg" alt="AWS" class="w-16 h-16 mx-auto mb-3 object-contain">
+                    <h3 class="text-lg font-bold text-white mb-2">AWS Machine Learning Engineer Associate</h3>
+                    <p class="text-sm text-gray-400">Amazon Web Services</p>
+                </img>
+
+                <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 hover:border-indigo-500/50 transition-all text-center">
+                    <img src="Images/aws-icon.jpeg" alt="AWS" class="w-16 h-16 mx-auto mb-3 object-contain">
+                    <h3 class="text-lg font-bold text-white mb-2">AWS Data Engineer Associate</h3>
+                    <p class="text-sm text-gray-400">Amazon Web Services</p>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 hover:border-indigo-500/50 transition-all text-center">
+                    <img src="Images/aws-icon.jpeg" alt="AWS" class="w-16 h-16 mx-auto mb-3 object-contain">
+                    <h3 class="text-lg font-bold text-white mb-2">AWS Cloud Practitioner</h3>
+                    <p class="text-sm text-gray-400">Amazon Web Services</p>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 hover:border-indigo-500/50 transition-all text-center">
+                    <img src="Images/databricks-icon.jpeg" alt="Databricks" class="w-16 h-16 mx-auto mb-3 object-contain">
+                    <h3 class="text-lg font-bold text-white mb-2">Databricks Generative AI</h3>
+                    <p class="text-sm text-gray-400">Databricks</p>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 hover:border-indigo-500/50 transition-all text-center">
+                    <img src="Images/ms-azure-icon.jpeg" alt="Microsoft Azure" class="w-16 h-16 mx-auto mb-3 object-contain">
+                    <h3 class="text-lg font-bold text-white mb-2">Microsoft Azure Fundamentals</h3>
+                    <p class="text-sm text-gray-400">Microsoft</p>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 hover:border-indigo-500/50 transition-all text-center">
+                    <img src="Images/ms-azure-icon.jpeg" alt="Microsoft Azure" class="w-16 h-16 mx-auto mb-3 object-contain">
+                    <h3 class="text-lg font-bold text-white mb-2">Microsoft Azure Data Fundamentals</h3>
+                    <p class="text-sm text-gray-400">Microsoft</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="bg-slate-800/30">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Expertise</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <h3 class="text-xl font-bold flex items-center gap-3"><i class="fas fa-brain text-indigo-400"></i> AI & Data Science</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1"><span class="text-sm">Generative AI (LLMs)</span><span class="text-sm text-gray-400">95%</span></div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="95%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1"><span class="text-sm">Machine Learning</span><span class="text-sm text-gray-400">90%</span></div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="90%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1"><span class="text-sm">Natural Language Processing</span><span class="text-sm text-gray-400">88%</span></div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="88%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1"><span class="text-sm">RAG & Prompt Engineering</span><span class="text-sm text-gray-400">90%</span></div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="90%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <h3 class="text-xl font-bold flex items-center gap-3"><i class="fas fa-cloud text-indigo-400"></i> Engineering & Cloud</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1"><span class="text-sm">AWS (Lambda, S3, Bedrock)</span><span class="text-sm text-gray-400">85%</span></div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="85%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1"><span class="text-sm">Python / Backend</span><span class="text-sm text-gray-400">92%</span></div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="92%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1"><span class="text-sm">Docker & DevOps</span><span class="text-sm text-gray-400">80%</span></div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="80%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1"><span class="text-sm">Data Engineering & ETL</span><span class="text-sm text-gray-400">85%</span></div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="85%"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Portfolio</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="project-card bg-slate-800/40 rounded-3xl overflow-hidden border border-slate-700">
+                    <div class="h-48 bg-slate-700 relative flex items-center justify-center">
+                        <i class="fas fa-robot text-5xl text-indigo-400 opacity-50"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Legal Document Q&A</h3>
+                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">Multi-agent RAG system with 85% accuracy on complex legal queries.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 bg-indigo-500/10 text-indigo-400 rounded">LangChain</span>
+                            <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 bg-indigo-500/10 text-indigo-400 rounded">FAISS</span>
+                        </div>
+                        <a href="#" class="text-indigo-400 text-sm font-semibold flex items-center gap-2 hover:gap-3 transition-all">
+                            View Case Study <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card bg-slate-800/40 rounded-3xl overflow-hidden border border-slate-700">
+                    <div class="h-48 bg-slate-700 relative flex items-center justify-center">
+                        <i class="fas fa-microscope text-5xl text-purple-400 opacity-50"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Kidney Disease Classification</h3>
+                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">Deep learning model achieving 81% accuracy for early diagnosis.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 bg-purple-500/10 text-purple-400 rounded">TensorFlow</span>
+                            <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 bg-purple-500/10 text-purple-400 rounded">MLFlow</span>
+                        </div>
+                        <a href="#" class="text-purple-400 text-sm font-semibold flex items-center gap-2 hover:gap-3 transition-all">
+                            View Project <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card bg-slate-800/40 rounded-3xl overflow-hidden border border-slate-700">
+                    <div class="h-48 bg-slate-700 relative flex items-center justify-center">
+                        <i class="fas fa-chart-line text-5xl text-cyan-400 opacity-50"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Airbnb Data Analytics</h3>
+                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">Price prediction and visualization using Random Forest and Tableau.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 bg-cyan-500/10 text-cyan-400 rounded">Tableau</span>
+                            <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 bg-cyan-500/10 text-cyan-400 rounded">Scikit-Learn</span>
+                        </div>
+                        <a href="#" class="text-cyan-400 text-sm font-semibold flex items-center gap-2 hover:gap-3 transition-all">
+                            View Dashboard <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="bg-slate-800/30">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold mb-6">Get In Touch</h2>
+                    <p class="text-gray-400 mb-8">Currently open to new opportunities and collaborations in GenAI. Drop a message!</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-indigo-600/20 flex items-center justify-center text-indigo-400"><i class="fas fa-envelope"></i></div>
+                            <p class="text-gray-300">aniketanvekar25@gmail.com</p>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-indigo-600/20 flex items-center justify-center text-indigo-400"><i class="fas fa-phone"></i></div>
+                            <p class="text-gray-300">+1 (201) 920-4974</p>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-indigo-600/20 flex items-center justify-center text-indigo-400"><i class="fas fa-map-marker-alt"></i></div>
+                            <p class="text-gray-300">New Jersey, USA</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="bg-slate-800/80 p-8 rounded-3xl border border-slate-700 shadow-xl space-y-4">
+                    <input type="text" required placeholder="Name" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:border-indigo-500 outline-none transition-all">
+                    <input type="email" required placeholder="Email" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:border-indigo-500 outline-none transition-all">
+                    <textarea required placeholder="Message" rows="4" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:border-indigo-500 outline-none transition-all"></textarea>
+                    <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-500 py-3 rounded-xl font-bold transition-all transform active:scale-95">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 text-center border-t border-slate-800">
+        <p class="text-gray-500 text-sm">© 2024 Aniket Anvekar. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Mobile menu logic
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        const menuIcon = document.getElementById('menuIcon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileOverlay.classList.toggle('active');
+            menuIcon.classList.toggle('fa-bars');
+            menuIcon.classList.toggle('fa-times');
+        });
+
+        // Close overlay when a link is clicked
+        document.querySelectorAll('.mobile-nav-overlay a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileOverlay.classList.remove('active');
+                menuIcon.classList.add('fa-bars');
+                menuIcon.classList.remove('fa-times');
+            });
+        });
+
+        // Skill Bar Animation Observer
+        const observerOptions = { threshold: 0.5 };
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBar = entry.target.querySelector('.skill-progress');
+                    if (progressBar) {
+                        progressBar.style.width = progressBar.getAttribute('data-width');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('#skills > div > div > div').forEach(skill => {
+            skillObserver.observe(skill);
+        });
+    </script>
 </body>
 </html>
